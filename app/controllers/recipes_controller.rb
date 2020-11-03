@@ -6,5 +6,6 @@ class RecipesController < ApplicationController # rubocop:disable Style/Document
   end
 
   def show
+    @recipe = Recipe.find(params['id'])
   end
 end
