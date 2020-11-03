@@ -1,0 +1,22 @@
+.title-container {
+  padding-top: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  height: 40%;
+}
+
+.title {
+  letter-spacing: 10px;
+}
+
+.title-emoji {
+  font-size: 9rem;
+  margin: 2rem 2rem
+}
+
+.sections-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 4rem 0
+}

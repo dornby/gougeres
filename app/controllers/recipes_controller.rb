@@ -4,4 +4,7 @@ class RecipesController < ApplicationController # rubocop:disable Style/Document
   def index
     @recipes = Recipe.all
   end
+
+  def show
+  end
 end

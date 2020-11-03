@@ -1,2 +1,7 @@
-- @recipes.each do |recipe|
-  = recipe.name
+%h2 Recipes
+
+.recipes
+  %ul
+    - @recipes.sort_by(&:name).each do |recipe|
+      %h4= recipe.name
+      %hr
