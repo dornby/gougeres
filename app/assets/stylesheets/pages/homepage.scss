@@ -1,18 +1,17 @@
 .title-container {
-  padding-top: 10%;
+  padding-top: 8%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: baseline;
-  height: 40%;
+  align-items: center;
 }
 
 .title {
   letter-spacing: 10px;
 }
 
-.title-emoji {
-  font-size: 9rem;
-  margin: 2rem 2rem
+.title-emojis {
+  font-size: 64px;
 }
 
 .sections-container {
