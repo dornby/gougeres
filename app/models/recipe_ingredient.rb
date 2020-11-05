@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class RecipeIngredient < ApplicationRecord # rubocop:disable Style/Documentation
-  validates :name, presence: true
   validates :quantity, presence: true
-  validates :unit, presence: true
 
-  has_one :recipe
+  belongs_to :recipe
+  belongs_to :ingredient
+  belongs_to :unit
 end

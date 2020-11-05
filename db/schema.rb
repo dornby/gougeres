@@ -10,23 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_170726) do
+ActiveRecord::Schema.define(version: 2020_11_05_161307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "ingredient_units", force: :cascade do |t|
+    t.bigint "ingredient_id"
+    t.bigint "unit_id"
+    t.index ["ingredient_id"], name: "index_ingredient_units_on_ingredient_id"
+    t.index ["unit_id"], name: "index_ingredient_units_on_unit_id"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "recipe_ingredients", force: :cascade do |t|
     t.bigint "recipe_id"
-    t.string "name"
     t.float "quantity"
-    t.string "unit"
+    t.bigint "ingredient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "unit_id"
+    t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
     t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
+    t.index ["unit_id"], name: "index_recipe_ingredients_on_unit_id"
   end
 
   create_table "recipes", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.string "name"
   end
 
 end
