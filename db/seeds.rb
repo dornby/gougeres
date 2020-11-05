@@ -2,7 +2,7 @@
 
 RECIPES = [
   'Salade de pois chiches à la grecque',
-  'Tarallis',
+  'Taralli',
   'Hachis Parmentier',
   'Minestrone',
   'Pasta Dough',
