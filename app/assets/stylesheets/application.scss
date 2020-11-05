@@ -1,11 +1,14 @@
 @import "fonts";
+
 @import "pages/homepage";
-@import "pages/recipes";
+@import "pages/recipes/index";
+@import "pages/recipes/show";
 
 html, body {
   height: 90%;
   width: 99%;
   background: #eae7dd;
+  font-size: 20px;
 }
 
 .container {
@@ -18,22 +21,22 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-  font-size: 192px;
+  font-size: 256px;
   margin: 1rem 0
 }
 
 h2 {
-  font-size: 128px;
+  font-size: 192px;
   margin: 1rem 0
 }
 
 h3 {
-  font-size: 96px;
+  font-size: 128px;
   margin: 1rem 0
 }
 
 h4 {
-  font-size: 64px;
+  font-size: 96px;
   margin: 1rem 0
 }
 
@@ -43,6 +46,9 @@ a, a:visited {
 }
 
 a:hover {
-  text-shadow: 0px 0px 10px #b38609;
-  ;
+  text-shadow: 0px 0px 0.3rem #b38609;
+}
+
+.underlined {
+  text-decoration: underline;
 }
