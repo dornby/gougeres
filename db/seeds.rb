@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 
+Recipe.destroy_all
+Ingredient.destroy_all
+Unit.destroy_all
+RecipeIngredient.destroy_all
+IngredientUnit.destroy_all
+
 RECIPES = [
   'Salade de pois chiches à la grecque',
   'Taralli',
