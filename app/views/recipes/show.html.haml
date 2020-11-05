@@ -1,11 +1,18 @@
-%h2= @recipe.name
+%h3= @recipe.name
 
 %ul.ingredient-list
   %h4.underlined Ingredients
-  - @recipe.ingredients.each do |ingredient|
+  - @recipe.recipe_ingredients.each do |recipe_ingredient|
     .ingredient-container
       .ingredient-name
-        .ingredient-component= "☞ #{ingredient.name}"
+        .ingredient-component
+          ☞
+        .ingredient-component.margin-left-small
+          = recipe_ingredient.ingredient.name
       .ingredient-quantity
-        .ingredient-component= ingredient.quantity.round
-        .ingredient-component= ingredient.unit
+        .ingredient-component
+          - if recipe_ingredient.quantity == recipe_ingredient.quantity.to_i
+            = recipe_ingredient.quantity.to_i
+          -else
+            = recipe_ingredient.quantity.round(1)
+        .ingredient-component= recipe_ingredient.unit.name

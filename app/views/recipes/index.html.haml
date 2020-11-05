@@ -3,5 +3,5 @@
 .recipes
   %ul
     - @recipes.sort_by(&:name).each do |recipe|
-      %h4= link_to recipe.name, recipe_path(recipe)
-      %hr
+      .recipe
+        %h4= link_to recipe.name, recipe_path(recipe)

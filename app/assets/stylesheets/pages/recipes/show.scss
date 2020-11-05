@@ -9,13 +9,14 @@ ul.ingredient-list {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  font-size: 64px;
+  font-size: 48px;
   font-family: "Alberto Regular";
   letter-spacing: 1px;
 }
 
 .ingredient-name {
-  width: 50%
+  width: 70%;
+  display: flex;
 }
 
 .ingredient-quantity {
@@ -24,4 +25,8 @@ ul.ingredient-list {
   .ingredient-component {
     margin-left: 16px;
   }
+}
+
+.margin-left-small {
+  margin-left: 16px;
 }
