@@ -46,7 +46,7 @@ RECIPES.each do |recipe_name|
     create_recipe_ingredient(recipe, 'Vinaigre Doux', 3, 'CaS')
     create_recipe_ingredient(recipe, 'Miel', 1, 'CaC')
     create_recipe_ingredient(recipe, 'Citron jaune', 0.5, 'unité(s)')
-  when 'Tarallis'
+  when 'Taralli'
     create_recipe_ingredient(recipe, 'Farine T45', 250, 'g')
     create_recipe_ingredient(recipe, 'Vin blanc sec', 90, 'g')
     create_recipe_ingredient(recipe, "Huile d'olive", 80, 'g')
