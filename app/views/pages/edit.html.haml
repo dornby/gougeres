@@ -1,0 +1,20 @@
+%h2= "Edit mode"
+.category
+  %h3= "Recettes"
+  .actions
+    = link_to(new_recipe_path) do
+      .action
+        Créer une recette
+    = link_to(edit_recipes_path) do
+      .action
+        Éditer une recette existante
+.category
+  .title
+    %h3= "Ingrédients"
+  .actions
+    = link_to(edit_path) do
+      .action
+        Créer un ingrédient
+    = link_to(edit_path) do
+      .action
+        Ajouter une unité de mesure à un ingrédient existant

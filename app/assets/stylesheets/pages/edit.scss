@@ -1,0 +1,27 @@
+.category {
+  margin-bottom: 1rem;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  margin: 0 24px;
+}
+
+.action {
+  border-radius: 16px;
+  border: 1px solid black;
+  padding: 1rem;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+@media only screen and (min-width : 1200px) {
+  .actions {
+    flex-direction: row;
+  }
+
+  .action {
+    margin-right: 1rem;
+  }
+}

@@ -1,12 +1,12 @@
 %h3= @recipe.name
 
 %ul.ingredient-list
-  %h4.underlined Ingredients
+  %h4.underlined Ingrédients
   - @recipe.recipe_ingredients.each do |recipe_ingredient|
     .ingredient-container
       .ingredient-name
         .ingredient-component
-          ☞
+          •
         .ingredient-component.margin-left-small
           = recipe_ingredient.ingredient.name
       .ingredient-quantity
