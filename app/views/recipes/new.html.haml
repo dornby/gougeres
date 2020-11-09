@@ -2,4 +2,5 @@
 
 = simple_form_for @recipe do |f|
   = f.input :name, label: false, placeholder: "Nom de la recette"
+  = f.input :content, as: :rich_text_area, label: false
   = f.submit

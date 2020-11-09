@@ -7,8 +7,10 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require("trix")
+var Trix = require("trix")
 require("@rails/actiontext")
+
+Trix.config.blockAttributes.heading1.tagName = "h4";
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

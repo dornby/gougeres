@@ -2,12 +2,18 @@ input.string {
   width: 50%;
   font-size: 1rem;
   border-radius: 0.2rem;
-  border: 1px solid black;
+  border: none;
   padding: 0.6rem;
   font-family: "Cormorant Garamond";
+  margin-bottom: 1rem;
 }
 
 input.string:focus {
   outline: none;
-  border: 2px solid #4b808c;
+  border: 1px solid #4b808c;
+}
+
+input.string#recipe_name {
+  font-family: "Alberto Regular";
+  font-size: 32px;
 }
