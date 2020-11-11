@@ -11,7 +11,7 @@
 
   .ingredient-name {
     margin-right: 2rem;
-    width: 70%;
+    width: 80%;
   }
 
   .quantity {
@@ -25,10 +25,8 @@
   }
 
   .delete-btn {
-    width: 10%;
     display: flex;
     font-size: 16px;
-    border: 1px solid #6b2323;
     margin-top: .3rem;
     margin-bottom: 1.3rem;
     justify-content: center;
@@ -36,24 +34,14 @@
     border-radius: 40px;
 
     a {
-      color: #6b2323
+      color: #bd1414
     }
   }
 }
 
 .links.add-ingredient {
-  width: 8%;
-    display: flex;
-    font-size: 16px;
-    background: #144224;
-    margin-top: .3rem;
-    margin-bottom: 1.3rem;
-    padding: .4rem 0;
-    justify-content: center;
-    align-items: center;
-    border-radius: 40px;
-
     a {
-      color: white
+      font-size: 1.4rem;
+      color: #06a052;
     }
 }
