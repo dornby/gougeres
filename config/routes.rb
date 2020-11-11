@@ -2,8 +2,11 @@
 
 Rails.application.routes.draw do
   root 'pages#root'
-  get '/edit', to: 'pages#edit'
-  get '/edit/recipes', to: 'pages#edit_recipes'
 
-  resources :recipes, only: %i[index show edit new]
+  namespace :admin do
+    root 'pages#root'
+    resources :recipes, only: %i[index edit new]
+  end
+
+  resources :recipes, only: %i[index show]
 end
