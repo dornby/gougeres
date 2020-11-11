@@ -1,6 +1,4 @@
-input.string {
-  width: 50%;
-  font-size: 1rem;
+input.string, select.select, input.numeric {
   border-radius: 0.2rem;
   border: none;
   padding: 0.6rem;
@@ -8,12 +6,27 @@ input.string {
   margin-bottom: 1rem;
 }
 
-input.string:focus {
+input.string {
+  font-size: 1rem;
+}
+
+input.string:focus, select.select:focus, input.numeric:focus {
   outline: none;
   border: 1px solid #4b808c;
 }
 
 input.string#recipe_name {
+  width: 50%;
   font-family: "Alberto Regular";
   font-size: 32px;
+}
+
+select.select {
+  font-size: 0.8rem;
+}
+
+input.numeric {
+  font-size: 0.8rem;
+  padding: 0.6rem 0;
+  padding-left: 0.6rem;
 }

@@ -4,6 +4,11 @@
   %h3 Nom
   = f.input :name, label: false, placeholder: "Gougères au comté"
   %h3 Ingrédients
+  #recipe_ingredients
+    = f.simple_fields_for :recipe_ingredients do |recipe_ingredient|
+      = render 'recipe_ingredient_fields', f: recipe_ingredient
+    .links.add-ingredient
+      = link_to_add_association 'Ajouter', f, :recipe_ingredients
   %h3 Contenu
   = f.input :content, as: :rich_text_area, label: false
   = f.submit

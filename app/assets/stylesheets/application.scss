@@ -4,8 +4,9 @@
 
 @import "pages/root";
 @import "pages/edit";
-@import "pages/recipes/index";
-@import "pages/recipes/show";
+@import "recipes/index";
+@import "recipes/show";
+@import "admin/recipes/new";
 
 $desktop: "only screen and (min-width : 1200px)";
 

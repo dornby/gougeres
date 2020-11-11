@@ -9,6 +9,8 @@ require("@rails/activestorage").start()
 require("channels")
 var Trix = require("trix")
 require("@rails/actiontext")
+require("jquery")
+require("@nathanvda/cocoon")
 
 Trix.config.blockAttributes.heading1.tagName = "h4";
 

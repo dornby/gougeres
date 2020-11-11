@@ -7,5 +7,7 @@ class Recipe < ApplicationRecord # rubocop:disable Style/Documentation
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
 
+  accepts_nested_attributes_for :recipe_ingredients, reject_if: :all_blank, allow_destroy: true
+
   has_rich_text :content
 end
