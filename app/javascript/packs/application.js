@@ -11,6 +11,7 @@ var Trix = require("trix")
 require("@rails/actiontext")
 require("jquery")
 require("@nathanvda/cocoon")
+require("cocoon/callbacks")
 
 Trix.config.blockAttributes.heading1.tagName = "h4";
 
