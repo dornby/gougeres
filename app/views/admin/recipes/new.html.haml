@@ -4,6 +4,23 @@
   %h3 Nom
   = f.input :name, label: false, placeholder: "Gougères au comté"
   %h3 Ingrédients
+  %button.btn.btn-primary{"data-target" => "#exampleModalCenter", "data-toggle" => "modal", :type => "button"}
+    Launch demo modal
+
+  #exampleModalCenter.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalCenterTitle", :role => "dialog", :tabindex => "-1"}
+    .modal-dialog.modal-dialog-centered{:role => "document"}
+      .modal-content
+        .modal-header
+          %h4.modal-title Créer un ingrédient
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"}
+              %i.fas.fa-times
+        .modal-body
+          Bonjour
+        .modal-footer
+          %button.btn.btn-primary{:type => "button"} Save changes
+
+
   #recipe_ingredients
     = f.simple_fields_for :recipe_ingredients do |recipe_ingredient|
       = render 'recipe_ingredient_fields', f: recipe_ingredient

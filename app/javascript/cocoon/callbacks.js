@@ -12,7 +12,7 @@ jQuery(function() {
     .on('cocoon:before-insert', function(_e, insertedItem, _originalEvent) {
       $.ajax({
         type: 'GET',
-        url: "/ingredients",
+        url: "/admin/ingredients",
         success: function(data) {
           var selectElement = insertedItem.find(".ingredient-name").find("select")
           selectElement.empty();

@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'pages#root'
     resources :recipes, only: %i[index edit new create]
+    resources :ingredients, only: %i[index new]
   end
 
   resources :recipes, only: %i[index show]
-  resources :ingredients, only: %i[index]
   resources :ingredient_units, only: %i[index]
 end
