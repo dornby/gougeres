@@ -5,12 +5,17 @@ ul.ingredient-list {
   border-radius: 16px;
 }
 
+li.ingredient-item {
+  margin-left: 24px;
+}
+
 .ingredient-container {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   font-size: 48px;
   letter-spacing: 1px;
+  margin-left: 16px;
 }
 
 .ingredient-name {
