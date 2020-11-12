@@ -1,14 +1,12 @@
 .nested-fields
   .ingredient-field.ingredient-name
-    = f.association :ingredient do |f|
-      - sorted_ingredients = Ingredient.order(:name)
-      = f.input :name, label: false, as: :select, selected: sorted_ingredients.first, collection: sorted_ingredients
+    - sorted_ingredients = Ingredient.order(:name)
+    = f.association :ingredient, label: false, as: :select, selected: sorted_ingredients.first, collection: sorted_ingredients
   .ingredient-field.quantity
     = f.input :quantity, label: false, placeholder: "2"
   .ingredient-field.unit-name
-    = f.association :unit do |f|
-      - sorted_units = Unit.order(:name)
-      = f.input :name, label: false, placeholder: "g", as: :select, selected: sorted_units.first, collection: sorted_units
+    - sorted_units = Unit.order(:name)
+    = f.association :unit, label: false, placeholder: "g", as: :select, selected: sorted_units.first, collection: sorted_units
   .ingredient-field.delete-btn
     = link_to_remove_association(f) do
       %i.fas.fa-times-circle

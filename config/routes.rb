@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'pages#root'
-    resources :recipes, only: %i[index edit new]
+    resources :recipes, only: %i[index edit new create]
   end
 
   resources :recipes, only: %i[index show]
