@@ -8,6 +8,12 @@ input.string, select.select, input.numeric {
 
 input.string {
   font-size: 1rem;
+  width: 100%;
+}
+
+input.string::placeholder {
+  color: #cccccc;
+  opacity: 1;
 }
 
 input.string:focus, select.select:focus, input.numeric:focus {
@@ -31,7 +37,12 @@ input.numeric {
   padding-left: 0.6rem;
 }
 
-.submit {
+input.numeric::placeholder {
+  color: #cccccc;
+  opacity: 1;
+}
+
+input.submit {
   font-family: "Cormorant Garamond";
   padding: 0.6rem 1rem;
   margin-top: 2rem;
@@ -43,6 +54,5 @@ input.numeric {
 }
 
 .submit:hover {
-  background: #000000a6;
-  color: white;
+  box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.5);
 }

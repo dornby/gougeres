@@ -1,3 +1,16 @@
+.create-ingredient, #ingredient-submit {
+	border: 1px solid black;
+	border-radius: 16px;
+	padding: 16px;
+	font-family: "Cormorant Garamond";
+	font-size: 0.8rem;
+	margin-left: 48px;
+}
+
+.create-ingredient:focus, #ingredient-submit {
+	outline: 0;
+}
+
 .modal-open {
 	overflow: hidden
 }
@@ -23,7 +36,7 @@
 	position: relative;
 	width: auto;
 	margin: .5rem;
-	pointer-events: none
+	pointer-events: none;
 }
 
 .modal.fade .modal-dialog {
@@ -113,7 +126,7 @@
 	flex-direction: column;
 	width: 100%;
 	pointer-events: auto;
-	background-color: #fff;
+	background-color: #ececec;
 	background-clip: padding-box;
 	border: 1px solid rgba(0, 0, 0, .2);
 	border-radius: .3rem;
@@ -157,6 +170,10 @@
 	background: transparent;
 }
 
+.close:focus {
+	outline: 0;
+}
+
 .modal-title {
 	margin-bottom: 0;
 	line-height: 1.5
@@ -179,12 +196,13 @@
 	-ms-flex-pack: end;
 	justify-content: flex-end;
 	padding: .75rem;
+	padding-top: 0;
 	border-bottom-right-radius: calc(.3rem - 1px);
 	border-bottom-left-radius: calc(.3rem - 1px);
 }
 
 .modal-footer>* {
-	margin: .25rem
+	margin: .25rem;
 }
 
 .modal-scrollbar-measure {

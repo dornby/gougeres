@@ -4,24 +4,21 @@ Recipe.destroy_all
 Ingredient.destroy_all
 Unit.destroy_all
 RecipeIngredient.destroy_all
-IngredientUnit.destroy_all
 
 RECIPES = [
-  'Salade de pois chiches à la grecque',
-  'Taralli',
-  'Hachis Parmentier',
-  'Minestrone',
-  'Pasta Dough',
-  'Pasta al ragú',
-  'Babka',
-  'Butter Chicken'
+  { name: 'Salade de pois chiches à la grecque', content: 'Bonjour' },
+  { name: 'Taralli', content: 'Bonjour' },
+  { name: 'Hachis Parmentier', content: 'Bonjour' },
+  { name: 'Minestrone', content: 'Bonjour' },
+  { name: 'Pasta Dough', content: 'Bonjour' },
+  { name: 'Pasta al ragú', content: 'Bonjour' },
+  { name: 'Babka', content: 'Bonjour' },
+  { name: 'Butter Chicken', content: 'Bonjour' }
 ].freeze
 
 def create_recipe_ingredient(recipe, ingredient_name, quantity, unit_name)
   ingredient = Ingredient.find_by(name: ingredient_name) || Ingredient.create!(name: ingredient_name)
   unit = Unit.find_by(name: unit_name) || Unit.create!(name: unit_name)
-
-  IngredientUnit.find_by(ingredient: ingredient, unit: unit) || ingredient.ingredient_units.create!(unit: unit)
 
   recipe.recipe_ingredients.create!(
     ingredient: ingredient,
@@ -30,8 +27,8 @@ def create_recipe_ingredient(recipe, ingredient_name, quantity, unit_name)
   )
 end
 
-RECIPES.each do |recipe_name|
-  recipe = Recipe.create!(name: recipe_name)
+RECIPES.each do |recipe_instance|
+  recipe = Recipe.create!(name: recipe_instance[:name], content: recipe_instance[:content])
   case recipe.name
   when 'Salade de pois chiches à la grecque'
     create_recipe_ingredient(recipe, 'Pois chiches cuits', 400, 'g')

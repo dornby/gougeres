@@ -1,26 +1,15 @@
 %h2 Nouvelle recette
 
+#ingredientModal.modal{"aria-hidden" => "true", "aria-labelledby" => "exampleModalCenterTitle", :role => "dialog", :tabindex => "-1"}
+  = render 'components/modal', title: "Créer un ingrédient", content: render('admin/ingredients/new')
+
 = simple_form_for [:admin, @recipe] do |f|
   %h3 Nom
   = f.input :name, label: false, placeholder: "Gougères au comté"
-  %h3 Ingrédients
-  %button.btn.btn-primary{"data-target" => "#exampleModalCenter", "data-toggle" => "modal", :type => "button"}
-    Launch demo modal
-
-  #exampleModalCenter.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalCenterTitle", :role => "dialog", :tabindex => "-1"}
-    .modal-dialog.modal-dialog-centered{:role => "document"}
-      .modal-content
-        .modal-header
-          %h4.modal-title Créer un ingrédient
-          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-            %span{"aria-hidden" => "true"}
-              %i.fas.fa-times
-        .modal-body
-          Bonjour
-        .modal-footer
-          %button.btn.btn-primary{:type => "button"} Save changes
-
-
+  .ingredient-title-container
+    %h3 Ingrédients
+    %button.create-ingredient{"data-target" => "#ingredientModal", "data-toggle" => "modal", :type => "button"}
+      Créer un ingrédient
   #recipe_ingredients
     = f.simple_fields_for :recipe_ingredients do |recipe_ingredient|
       = render 'recipe_ingredient_fields', f: recipe_ingredient
@@ -29,4 +18,12 @@
         %i.fas.fa-plus-circle
   %h3 Contenu
   = f.input :content, as: :rich_text_area, label: false
-  = f.button :submit, "Créer", class: 'submit'
+
+  .submit-container
+    = f.button :submit, "Créer", class: 'submit'
+
+.alert-container
+  .alert.alert-success.fade.in.show{role: "alert"}
+    %i.fas.fa-check
+    %span=" "
+    %span="Ingrédient créé"

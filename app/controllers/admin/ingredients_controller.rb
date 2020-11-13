@@ -10,8 +10,14 @@ module Admin
       end
     end
 
-    def new
-      @ingredient = Ingredient.new
+    def create
+      @ingredient = Ingredient.create!(ingredient_params)
+    end
+
+    private
+
+    def ingredient_params
+      params.require(:ingredient).permit(:name)
     end
   end
 end

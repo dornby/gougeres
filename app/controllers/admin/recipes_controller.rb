@@ -8,6 +8,7 @@ module Admin
 
     def new
       @recipe = Recipe.new
+      @ingredient = Ingredient.new
     end
 
     def edit

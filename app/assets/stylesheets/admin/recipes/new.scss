@@ -20,7 +20,7 @@
   }
 
   .unit-name {
-    margin-right: 2rem;
+    margin-right: 1rem;
     width: 10%;
   }
 
@@ -39,9 +39,18 @@
   }
 }
 
+.ingredient-title-container {
+  display: flex;
+  align-items: center;
+}
+
 .links.add-ingredient {
     a {
       font-size: 1.4rem;
       color: #06a052;
     }
+}
+
+.submit-container {
+  display: inline-block;
 }

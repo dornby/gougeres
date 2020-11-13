@@ -6,12 +6,16 @@
 @import "actiontext";
 
 @import "components/modal";
+@import "components/alert";
 
 @import "pages/root";
 @import "pages/edit";
+
 @import "recipes/index";
 @import "recipes/show";
+
 @import "admin/recipes/new";
+@import "admin/ingredients/new";
 
 $desktop: "only screen and (min-width : 1200px)";
 
@@ -28,6 +32,7 @@ html, body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 h1, h2, h3, h4 {
