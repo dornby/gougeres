@@ -8,5 +8,6 @@
     %h2= link_to "☞ Recettes", recipes_path
     %h2 ☞ Vins
 
-  .edit-container
-    = link_to "Admin", admin_root_path
+  .admin-container
+    = link_to admin_root_path do
+      %i.fas.fa-pen

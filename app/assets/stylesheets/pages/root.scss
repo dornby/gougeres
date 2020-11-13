@@ -28,18 +28,31 @@ $desktop: "only screen and (min-width : 1200px)";
   margin: 2rem 0
 }
 
-.edit-container {
+.admin-container {
   flex: 2;
+  width: 100%;
   display: flex;
-  align-self: center;
-  padding-bottom: 1.6rem;
+  padding-bottom: 1.2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 
   a {
-    padding: 0.6rem;
-    border-radius: 16px;
-    border: 1px solid black;
-    background: #dcdad3;
-    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-right: 0.6rem;
+    border-radius: 100%;
+    background: black;
+    -webkit-box-shadow: 5px 5px 20px -2px rgb(0,0,0);
+    box-shadow: 5px 5px 20px -2px rgb(0,0,0);
+
+    i {
+      color: white;
+      font-size: 0.8rem;
+    }
   }
 }
 
