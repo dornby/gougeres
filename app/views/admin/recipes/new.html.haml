@@ -18,6 +18,9 @@
         %i.fas.fa-plus-circle
   %h3 Contenu
   = f.input :content, as: :rich_text_area, label: false
+  %h3 Photo
+  = f.input :picture, label: false, input_html: { style: "display:none" }
+  = label_tag "recipe_picture", "Choisir un fichier", id: "recipe-picture-button"
 
   .submit-container
     = f.button :submit, "Créer", class: 'submit'

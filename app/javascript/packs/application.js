@@ -16,6 +16,8 @@ require("@rails/ujs").start()
 require("@nathanvda/cocoon")
 
 require("cocoon/callbacks")
+
 require("forms/admin_ingredient_form")
+require("forms/recipe_picture_button")
 
 Trix.config.blockAttributes.heading1.tagName = "h4";

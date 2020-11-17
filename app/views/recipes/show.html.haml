@@ -1,7 +1,10 @@
+- if @recipe.picture.attachment
+  .recipe-picture= cl_image_tag @recipe.picture.key, height: 650, crop: :fill
+
 %h3= @recipe.name
 
+%h4.underlined Ingrédients
 %ol.ingredient-list
-  %h4.underlined Ingrédients
   - @recipe.recipe_ingredients.each do |recipe_ingredient|
     %li.ingredient-item
       .ingredient-container
@@ -15,4 +18,5 @@
               = recipe_ingredient.quantity.round(1)
           .ingredient-component= recipe_ingredient.unit.name
 
+%h4.underlined Recette
 = @recipe.content

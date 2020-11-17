@@ -51,6 +51,25 @@
     }
 }
 
-.submit-container {
-  display: inline-block;
+#recipe-picture-button {
+  font-size: 1;
+  display: block;
+  cursor: pointer;
+  border: 1px solid #06a052;
+  padding: 0.5rem;
+  border-radius: 16px;
+  cursor: pointer;
+  width: 7rem;
+}
+
+#recipe-picture-button.file-chosen {
+  cursor: pointer;
+  background: #06a052;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 16px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

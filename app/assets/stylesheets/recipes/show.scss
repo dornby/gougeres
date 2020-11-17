@@ -1,8 +1,22 @@
-ul.ingredient-list {
-  padding: 0.5rem 1rem;
-  // border: 4px solid #000;
-  // border-style: dotted;
-  border-radius: 16px;
+.recipe-picture {
+  height: 13.5rem;
+
+  img {
+    display: block;
+    width: 101vw;
+    margin-left: 50%;
+    margin-top: -1%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+}
+
+ol.ingredient-list {
+  margin: 0;
+  margin-bottom: 1rem;
 }
 
 li.ingredient-item {

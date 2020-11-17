@@ -26,6 +26,7 @@ module Admin
       params.require(:recipe).permit(
         :name,
         :content,
+        :picture,
         recipe_ingredients_attributes: [
           :quantity,
           :ingredient_id,

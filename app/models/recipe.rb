@@ -10,4 +10,5 @@ class Recipe < ApplicationRecord # rubocop:disable Style/Documentation
   accepts_nested_attributes_for :recipe_ingredients, reject_if: :all_blank, allow_destroy: true
 
   has_rich_text :content
+  has_one_attached :picture
 end

@@ -33,6 +33,7 @@ gem 'cocoon'
 gem 'font-awesome-sass'
 gem 'haml'
 gem 'simple_form'
+gem 'cloudinary'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
