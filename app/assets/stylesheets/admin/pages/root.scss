@@ -1,3 +1,19 @@
+.root_create_ingredient {
+  font-family: "Cormorant Garamond";
+  background: none;
+  font-size: inherit;
+  border-radius: 16px;
+  border: 1px solid black;
+  padding: 1rem;
+  margin-bottom: 24px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.root_create_ingredient:focus {
+  outline: none;
+}
+
 .category {
   margin-bottom: 1rem;
 }
@@ -14,6 +30,7 @@
   padding: 1rem;
   margin-bottom: 24px;
   text-align: center;
+  cursor: pointer;
 }
 
 @media only screen and (min-width : 1200px) {

@@ -1,6 +1,6 @@
-%h2 Nouvelle recette
+%h2 Editer
 
 #ingredientModal.modal{"aria-hidden" => "true", "aria-labelledby" => "exampleModalCenterTitle", :role => "dialog", :tabindex => "-1"}
   = render 'components/modal', title: "Créer un ingrédient", content: render('admin/ingredients/new')
 
-= render 'admin/recipes/form', form: "new"
+= render 'admin/recipes/form', form: "edit"

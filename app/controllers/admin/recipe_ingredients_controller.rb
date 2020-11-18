@@ -1,9 +1,14 @@
 # frozen_string_literal: true
 
 module Admin
-  class RecipesController < AdminController # rubocop:disable Style/Documentation
+  class RecipeIngredientsController < AdminController # rubocop:disable Style/Documentation
     def index
-      @recipes = Recipe.all
+      @recipe = Recipe.find(params['recipe_id'])
+      @recipe_ingredients = @recipe.recipe_ingredients
+
+      respond_to do |format|
+        format.json { render json: @recipe_ingredients }
+      end
     end
 
     def new
@@ -21,12 +26,6 @@ module Admin
       redirect_to recipe_path(@recipe)
     end
 
-    def update
-      @recipe = Recipe.find(params['id'])
-      @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe)
-    end
-
     private
 
     def recipe_params
@@ -34,12 +33,12 @@ module Admin
         :name,
         :content,
         :picture,
-        recipe_ingredients_attributes: recipe_ingredients_attributes
+        recipe_ingredients_attributes: [
+          :quantity,
+          :ingredient_id,
+          :unit_id
+        ]
       )
-    end
-
-    def recipe_ingredients_attributes
-      %i[id quantity ingredient_id unit_id _destroy]
     end
   end
 end

@@ -1,0 +1,32 @@
+= simple_form_for [:admin, @recipe] do |f|
+  %h3 Nom
+  = f.input :name, label: false, placeholder: "Gougères au comté"
+  .ingredient-title-container
+    %h3 Ingrédients
+    %button.create-ingredient{"data-target" => "#ingredientModal", "data-toggle" => "modal", :type => "button"}
+      Créer un ingrédient
+  #recipe_ingredients
+    = f.simple_fields_for :recipe_ingredients do |recipe_ingredient|
+      = render 'recipe_ingredient_fields', f: recipe_ingredient
+    .links.add-ingredient
+      = link_to_add_association(f, :recipe_ingredients) do
+        %i.fas.fa-plus-circle
+  %h3 Contenu
+  = f.input :content, as: :rich_text_area, label: false
+  %h3 Photo
+  - if form == "edit" && @recipe.picture.attachment
+    = f.input :picture, label: false, input_html: { style: "display:none" }
+    = label_tag "recipe_picture", @recipe.picture.filename, id: "recipe-picture-button", class: 'file-chosen'
+  - else
+    = f.input :picture, label: false, input_html: { style: "display:none" }
+    = label_tag "recipe_picture", "Choisir un fichier", id: "recipe-picture-button"
+
+  .submit-container
+    - button_text = form == "new" ? "Créer" : "Sauvegarder"
+    = f.button :submit, button_text, class: 'submit'
+
+.alert-container
+  .alert.alert-success.fade.in.show{role: "alert"}
+    %i.fas.fa-check
+    %span=" "
+    %span="Ingrédient créé"

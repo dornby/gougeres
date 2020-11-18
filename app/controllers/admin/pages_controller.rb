@@ -2,6 +2,8 @@
 
 module Admin
   class PagesController < AdminController # rubocop:disable Style/Documentation
-    def root; end
+    def root
+      @ingredient = Ingredient.new
+    end
   end
 end

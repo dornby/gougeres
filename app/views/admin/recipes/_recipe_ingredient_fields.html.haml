@@ -3,10 +3,10 @@
     = f.input :quantity, label: false, placeholder: "200"
   .ingredient-field.unit-name
     - sorted_units = Unit.order(:name)
-    = f.association :unit, label: false, placeholder: "g", as: :select, selected: sorted_units.first, collection: sorted_units
+    = f.association :unit, label: false, placeholder: "g", as: :select, collection: sorted_units
   .ingredient-field.ingredient-name
     - sorted_ingredients = Ingredient.order(:name)
-    = f.association :ingredient, label: false, as: :select, selected: sorted_ingredients.first, collection: sorted_ingredients
+    = f.association :ingredient, label: false, as: :select, collection: sorted_ingredients
   .ingredient-field.delete-btn
     = link_to_remove_association(f) do
       %i.fas.fa-times-circle

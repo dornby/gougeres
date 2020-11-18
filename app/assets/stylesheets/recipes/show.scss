@@ -1,17 +1,13 @@
-.recipe-picture {
-  height: 13.5rem;
-
-  img {
-    display: block;
-    width: 101vw;
-    margin-left: 50%;
-    margin-top: -1%;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%);
-  }
+img#recipe-picture {
+  display: block;
+  width: 101vw;
+  margin-left: 50%;
+  margin-top: -1%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 ol.ingredient-list {

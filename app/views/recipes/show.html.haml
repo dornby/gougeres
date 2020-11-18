@@ -1,22 +1,11 @@
 - if @recipe.picture.attachment
-  .recipe-picture= cl_image_tag @recipe.picture.key, height: 650, crop: :fill
+  = cl_image_tag @recipe.picture.key, width: 902, height: 600, crop: :fill, id: "recipe-picture"
 
 %h3= @recipe.name
 
 %h4.underlined Ingrédients
-%ol.ingredient-list
-  - @recipe.recipe_ingredients.each do |recipe_ingredient|
-    %li.ingredient-item
-      .ingredient-container
-        .ingredient-name
-          = recipe_ingredient.ingredient.name
-        .ingredient-quantity
-          .ingredient-component
-            - if recipe_ingredient.quantity == recipe_ingredient.quantity.to_i
-              = recipe_ingredient.quantity.to_i
-            -else
-              = recipe_ingredient.quantity.round(1)
-          .ingredient-component= recipe_ingredient.unit.name
+= render 'components/ingredients_list'
 
 %h4.underlined Recette
-= @recipe.content
+.margin-left-small
+  = @recipe.content
