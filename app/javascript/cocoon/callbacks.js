@@ -2,9 +2,15 @@ require("jquery")
 require("@nathanvda/cocoon")
 
 const ingredientOptions = (ingredients) => {
-  return ingredients.map(ingredient => {
+  const options = ingredients.map(ingredient => {
     return `<option value='${ingredient.id}'>${ingredient.name}</option>`
   })
+
+  options.unshift(
+    `<option value="">Choisir un ingrédient</option>`
+  )
+
+  return options
 }
 
 jQuery(function() {
