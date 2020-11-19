@@ -1,5 +1,6 @@
 - if @recipe.picture.attachment
-  = cl_image_tag @recipe.picture.key, width: 902, height: 600, crop: :fill, id: "recipe-picture"
+  .recipe-picture
+    = cl_image_tag @recipe.picture.key, width: 902, height: 600, crop: :fill, id: "recipe-picture"
 
 %h3= @recipe.name
 
