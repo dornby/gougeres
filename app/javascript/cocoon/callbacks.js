@@ -28,4 +28,16 @@ jQuery(function() {
         }
       });
     })
+    .on('cocoon:after-insert', function(_e, insertedItem, _originalEvent) {
+      $.ajax({
+        type: 'GET',
+        url: "/admin/ingredients/most_recent",
+        success: function(data) {
+          if (data) {
+            var selectElement = insertedItem.find(".ingredient-name").find("select")
+            selectElement[0].value = data.id
+          }
+        }
+      });
+    })
 })

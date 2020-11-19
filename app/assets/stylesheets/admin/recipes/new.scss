@@ -67,11 +67,19 @@
 }
 
 .links.add-ingredient {
+  display: flex;
   margin-top: 1rem;
-    a {
-      font-size: 1.4rem;
-      color: #74d4a8;
-    }
+  margin-bottom: 2rem;
+
+  .component {
+    margin-left: 1rem;
+  }
+
+  a {
+    display: flex;
+    font-size: 1.4rem;
+    color: #74d4a8;
+  }
 }
 
 #recipe-picture-button {

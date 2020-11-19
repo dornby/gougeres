@@ -14,6 +14,14 @@ module Admin
       @ingredient = Ingredient.create!(ingredient_params)
     end
 
+    def most_recent
+      @ingredient = Ingredient.where('created_at > ?', 2.minutes.ago).last
+
+      respond_to do |format|
+        format.json { render json: @ingredient }
+      end
+    end
+
     private
 
     def ingredient_params
