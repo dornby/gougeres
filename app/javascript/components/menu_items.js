@@ -4,18 +4,13 @@ $(document).on('turbolinks:load', function() {
   const menuButton = document.querySelector(".menu-button")
   const menu = document.querySelector(".menu")
   const menuPopUps = menu.getElementsByClassName("pop-up")
+  const booleanise = (e) => { return e === "true" }
 
   menuButton.addEventListener('click', function() {
     Array.prototype.forEach.call(menuPopUps, (item) => {
       item.classList.toggle("invisible")
       item.classList.toggle("slided-up")
-      if (item.classList.contains('menu-off')) {
-        item.classList.remove("menu-off")
-        item.classList.add("menu-on")
-      } else if (item.classList.contains('menu-on')) {
-        item.classList.remove("menu-on")
-        item.classList.add("menu-off")
-      }
+      item.dataset.menuOpen = !booleanise(item.dataset.menuOpen)
     })
   })
 
@@ -30,7 +25,7 @@ $(document).on('turbolinks:load', function() {
       menuButton.classList.remove("visible")
       menuButton.classList.add("invisible")
       Array.prototype.forEach.call(menuPopUps, (item) => {
-        if (item.classList.contains("menu-on")) {
+        if (booleanise(item.dataset.menuOpen)) {
           item.classList.remove("slided-up")
           item.classList.add("invisible")
         }
@@ -39,7 +34,7 @@ $(document).on('turbolinks:load', function() {
       menuButton.classList.remove("invisible")
       menuButton.classList.add("visible")
       Array.prototype.forEach.call(menuPopUps, (item) => {
-        if (item.classList.contains("menu-on")) {
+        if (booleanise(item.dataset.menuOpen)) {
           item.classList.remove("invisible")
           item.classList.add("slided-up")
         }
