@@ -9,6 +9,7 @@ $(document).on('turbolinks:load', function() {
 
     Array.prototype.forEach.call(menuPopUps, (item) => {
       item.classList.toggle("display-none")
+      item.classList.toggle("display-block")
     })
   })
 })

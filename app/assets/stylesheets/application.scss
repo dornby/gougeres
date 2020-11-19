@@ -63,6 +63,69 @@ a, a:visited {
   text-decoration: none
 }
 
+.menu {
+  display: flex;
+  flex-direction: column-reverse;
+  position: fixed;
+  bottom: 0.5rem;
+  right: 1rem;
+
+  .menu-item {
+    display: block;
+    padding-bottom: 1rem;
+  }
+
+  .menu-item.pop-up {
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      margin-right: 0.6rem;
+      border-radius: 100%;
+      background: #f7f7f7;
+      box-shadow: 5px 5px 20px -2px rgba(0,0,0,0.5);
+      -webkit-box-shadow: 5px 5px 20px -2px rgba(0,0,0,0.5);
+
+      i {
+        color: black;
+        font-size: 0.8rem;
+      }
+    }
+
+    a:hover {
+      cursor: pointer;
+    }
+
+    &.display-none {
+      display: none;
+    }
+  }
+
+  .menu-item.menu-button {
+
+    i {
+      background: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      margin-right: 0.6rem;
+      border-radius: 100%;
+      box-shadow: 5px 5px 20px -2px rgb(0,0,0);
+      -webkit-box-shadow: 5px 5px 20px -2px rgb(0,0,0);
+    }
+  }
+
+  .menu-item.menu-button:hover {
+    cursor: pointer;
+  }
+}
+
 .underlined {
   text-decoration: underline;
 }
