@@ -76,6 +76,7 @@ a, a:visited {
   }
 
   .menu-item.pop-up {
+    position: absolute;
 
     a {
       display: flex;
@@ -86,8 +87,6 @@ a, a:visited {
       margin-right: 0.6rem;
       border-radius: 100%;
       background: #f7f7f7;
-      box-shadow: 5px 5px 20px -2px rgba(0,0,0,0.5);
-      -webkit-box-shadow: 5px 5px 20px -2px rgba(0,0,0,0.5);
 
       i {
         color: black;
@@ -99,12 +98,62 @@ a, a:visited {
       cursor: pointer;
     }
 
-    &.display-none {
-      display: none;
+    &.invisible {
+      a {
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        -moz-transition: box-shadow 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out;
+        -o-transition: box-shadow 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out;
+        -webkit-transition: box-shadow 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out;
+        transition: box-shadow 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out;
+      }
+
+      bottom: 0rem;
+      opacity: 0;
+      visibility: hidden;
+      -moz-transition: bottom 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+      -o-transition: bottom 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+      -webkit-transition: bottom 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+      transition: bottom 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+    }
+
+    &.slided-up {
+      a {
+        box-shadow: 5px 5px 20px -2px rgba(0,0,0,0.5);
+        -webkit-box-shadow: 5px 5px 20px -2px rgba(0,0,0,0.5);
+        -moz-transition: box-shadow 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out;
+        -o-transition: box-shadow 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out;
+        -webkit-transition: box-shadow 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out;
+        transition: box-shadow 0.4s ease-in-out, -webkit-box-shadow 0.4s ease-in-out;
+      }
+
+      opacity: 1;
+      visibility: visible;
+      -moz-transition: bottom 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+      -o-transition: bottom 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+      -webkit-transition: bottom 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+      transition: bottom 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+    }
+
+    &.slided-up#menu-home {
+      bottom: 12rem;
+    }
+
+    &.slided-up#menu-edit {
+      bottom: 9rem;
+    }
+
+    &.slided-up#menu-food {
+      bottom: 6rem;
+    }
+
+    &.slided-up#menu-wine {
+      bottom: 3rem;
     }
   }
 
   .menu-item.menu-button {
+    z-index: 1;
 
     i {
       background: black;
@@ -118,6 +167,24 @@ a, a:visited {
       border-radius: 100%;
       box-shadow: 5px 5px 20px -2px rgb(0,0,0);
       -webkit-box-shadow: 5px 5px 20px -2px rgb(0,0,0);
+    }
+
+    &.invisible {
+      opacity: 0;
+      visibility: hidden;
+      -moz-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+      -o-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;;
+      -webkit-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;;
+      transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;;
+    }
+
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+      -moz-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;;
+      -o-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;;
+      -webkit-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;;
+      transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;;
     }
   }
 
