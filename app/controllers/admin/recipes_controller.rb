@@ -39,7 +39,7 @@ module Admin
     end
 
     def recipe_ingredients_attributes
-      %i[id quantity ingredient_id unit_id _destroy]
+      %i[id quantity comment ingredient_id unit_id _destroy]
     end
   end
 end

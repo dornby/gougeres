@@ -2,12 +2,18 @@
   - @recipe.recipe_ingredients.each do |recipe_ingredient|
     %li.ingredient-item
       .ingredient-container
-        .ingredient-name
-          = recipe_ingredient.ingredient.name
-        .ingredient-quantity
-          .ingredient-component
-            - if recipe_ingredient.quantity == recipe_ingredient.quantity.to_i
-              = recipe_ingredient.quantity.to_i
-            -else
-              = recipe_ingredient.quantity.round(1)
-          .ingredient-component= recipe_ingredient.unit.name
+        .ingredient-line
+          .ingredient-name
+            = recipe_ingredient.ingredient.name
+          .ingredient-quantity
+            .ingredient-component
+              - if recipe_ingredient.quantity == recipe_ingredient.quantity.to_i
+                = recipe_ingredient.quantity.to_i
+              -else
+                = recipe_ingredient.quantity.round(1)
+            .ingredient-component= recipe_ingredient.unit.name
+        - if recipe_ingredient.comment
+          .ingredient-line
+            .ingredient-comment
+              .ingredient-component
+                = recipe_ingredient.comment

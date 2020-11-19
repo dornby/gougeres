@@ -1,40 +1,55 @@
 .nested-fields {
-  display: flex;
+  border-left: 3px solid lightgrey;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  margin-bottom: 0.5rem;
 
-  .input {
-    width: 100%;
-
-    input, select {
-      width: 100%;
-    }
-  }
-
-  .ingredient-name {
-    margin-right: 2rem;
-    width: 80%;
-  }
-
-  .quantity {
-    margin-right: 1rem;
-    width: 10%;
-  }
-
-  .unit-name {
-    margin-right: 1rem;
-    width: 10%;
-  }
-
-  .delete-btn {
+  .ingredient-fields-line {
     display: flex;
-    font-size: 16px;
-    margin-top: .3rem;
-    margin-bottom: 1.3rem;
-    justify-content: center;
-    align-items: center;
-    border-radius: 40px;
 
-    a {
-      color: #bd1414
+    .input {
+      width: 100%;
+
+      input, select {
+        width: 100%;
+      }
+    }
+
+    .ingredient-name {
+      margin-right: 2rem;
+      width: 80%;
+    }
+
+    .quantity {
+      margin-right: 1rem;
+      width: 10%;
+    }
+
+    .unit-name {
+      margin-right: 1rem;
+      width: 10%;
+    }
+
+    .comment {
+      margin-right: 0.8rem;
+      width: 93%;
+    }
+
+    .ingredient-comment-field {
+      font-style: italic;
+    }
+
+    .delete-btn {
+      display: flex;
+      font-size: 16px;
+      margin-top: .3rem;
+      margin-bottom: 1.3rem;
+      justify-content: center;
+      align-items: center;
+      border-radius: 40px;
+
+      a {
+        color: #bd1414
+      }
     }
   }
 }
