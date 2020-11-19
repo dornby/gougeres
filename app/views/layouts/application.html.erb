@@ -16,6 +16,31 @@
   <body>
     <div class="container">
       <%= yield %>
+      <div class="menu">
+        <div class="menu-button menu-item">
+          <i class="fa fa-ellipsis-v"></i>
+        </div>
+        <div class="menu-item pop-up display-none">
+          <%= link_to "#" do %>
+            <i class="fas fa-wine-glass"></i>
+          <% end %>
+        </div>
+        <div class="menu-item pop-up display-none">
+          <%= link_to recipes_path do %>
+            <i class="fas fa-drumstick-bite"></i>
+          <% end %>
+        </div>
+        <div class="menu-item pop-up display-none" id="menu-edit">
+          <%= link_to admin_root_path do %>
+            <i class="fa fa-pen"></i>
+          <% end %>
+        </div>
+        <div class="menu-item pop-up display-none">
+          <%= link_to root_path do %>
+            <i class="fas fa-home"></i>
+          <% end %>
+        </div>
+      </div>
     </div>
   </body>
 </html>

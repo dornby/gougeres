@@ -20,4 +20,8 @@ require("cocoon/callbacks")
 require("forms/admin_ingredient_form")
 require("forms/recipe_picture_button")
 
+require("components/menu_items")
+
+require("pages/recipe_show_edit_link")
+
 Trix.config.blockAttributes.heading1.tagName = "h4";
