@@ -8,9 +8,9 @@
   #recipe-ingredients
     = f.simple_fields_for :recipe_ingredients do |recipe_ingredient|
       = render 'recipe_ingredient_fields', f: recipe_ingredient
-  .links.add-ingredient
-    = link_to_add_association(f, :recipe_ingredients) do
-      %i.fas.fa-plus-circle
+    .links.add-ingredient
+      = link_to_add_association(f, :recipe_ingredients) do
+        %i.fas.fa-plus-circle
   %h3 Contenu
   = f.input :content, as: :rich_text_area, label: false
   %h3 Photo

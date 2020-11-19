@@ -14,7 +14,7 @@ const ingredientOptions = (ingredients) => {
 }
 
 jQuery(function() {
-  $('#recipe_ingredients')
+  $('#recipe-ingredients')
     .on('cocoon:before-insert', function(_e, insertedItem, _originalEvent) {
       $.ajax({
         type: 'GET',
