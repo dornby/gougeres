@@ -1,16 +1,16 @@
 .nested-fields
-  .ingredient-fields-line
-    .ingredient-field.quantity
-      = f.input :quantity, label: false, placeholder: "200"
-    .ingredient-field.unit-name
-      - sorted_units = Unit.order(:name)
-      = f.association :unit, label: false, placeholder: "g", as: :select, collection: sorted_units
-    .ingredient-field.ingredient-name
-      - sorted_ingredients = Ingredient.order(:name)
-      = f.association :ingredient, label: false, collection: sorted_ingredients, input_html: { prompt: "Choisir un ingrédient" }
-    .ingredient-field.delete-btn
-      = link_to_remove_association(f) do
-        %i.fas.fa-times-circle
-  .ingredient-fields-line
-    .ingredient-field.comment
+  .ingredient-fields
+    .ingredient-fields-line#first-ingredient-fields-line
+      .ingredient-field.quantity
+        = f.input :quantity, label: false, placeholder: "200"
+      .ingredient-field.unit-name
+        - sorted_units = Unit.order(:name)
+        = f.association :unit, label: false, placeholder: "g", as: :select, collection: sorted_units
+      .ingredient-field.ingredient-name
+        - sorted_ingredients = Ingredient.order(:name)
+        = f.association :ingredient, label: false, collection: sorted_ingredients, input_html: { prompt: "Choisir un ingrédient" }
+    .ingredient-fields-line
       = f.input :comment, label: false, placeholder: "De préférence à température ambiante", input_html: { class: "ingredient-comment-field" }
+  .ingredient-field.delete-btn
+    = link_to_remove_association(f) do
+      %i.fas.fa-times-circle
