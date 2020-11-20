@@ -10,7 +10,7 @@
               - if recipe_ingredient.quantity == recipe_ingredient.quantity.to_i
                 = recipe_ingredient.quantity.to_i
               -else
-                = recipe_ingredient.quantity.round(1)
+                = recipe_ingredient.quantity.round(2)
             .ingredient-component= recipe_ingredient.unit.name
         - if recipe_ingredient.comment
           .ingredient-line
