@@ -23,6 +23,18 @@ trix-editor {
   background: white;
   border-radius: 0.2rem;
   border: none;
+
+  a {
+    color: #00a1c7;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  a:visited {
+    color: #00a1c7;
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }
 
 trix-editor:focus {
@@ -53,5 +65,19 @@ trix-editor:focus {
       padding: 0 !important;
       max-width: 100% !important;
     }
+  }
+}
+
+trix-editor, .trix-content {
+  a {
+    color: #00a1c7;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  a:visited {
+    color: #00a1c7;
+    text-decoration: underline;
+    cursor: pointer;
   }
 }
