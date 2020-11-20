@@ -1,6 +1,6 @@
 import Rails from "@rails/ujs";
 
-window.addEventListener('load', () => {
+$(document).on('turbolinks:load', function() {
   const ingredientForm = document.getElementById('new_ingredient')
 
   if (ingredientForm) {

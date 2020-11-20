@@ -1,4 +1,4 @@
-window.addEventListener('load', () => {
+$(document).on('turbolinks:load', function() {
   const actualBtn = document.getElementById('recipe_picture');
   const newButton = document.getElementById('recipe-picture-button');
 

@@ -1,8 +1,8 @@
 .alert-container {
   display: none;
   position: fixed;
-  bottom: 100px;
-	right: 260px;
+ 	top: 48px;
+	right: 288px;
 	opacity: 1;
   animation: fade 3s linear;
 }
@@ -18,8 +18,7 @@
   padding: 15px;
   position: absolute;
 	margin-bottom: 20px;
-	border: 1px solid transparent;
-	border-radius: 4px;
+	border-radius: 16px;
 }
 
 .alert h4 {
@@ -54,9 +53,8 @@
 }
 
 .alert-success {
-	color: #3c763d;
-	background-color: #dff0d8;
-	border-color: #d6e9c6
+	color: white;
+	background-color: #6eaf55;
 }
 
 .alert-success hr {

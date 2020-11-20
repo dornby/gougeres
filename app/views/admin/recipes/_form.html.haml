@@ -26,8 +26,4 @@
     - button_text = form == "new" ? "Créer" : "Sauvegarder"
     = f.button :submit, button_text, class: 'submit'
 
-.alert-container
-  .alert.alert-success.fade.in.show{role: "alert"}
-    %i.fas.fa-check
-    %span=" "
-    %span="Ingrédient créé"
+= render "components/flash"
