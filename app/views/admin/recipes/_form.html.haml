@@ -3,6 +3,8 @@
   = f.input :name, label: false, placeholder: "Gougères au comté"
   .ingredient-title-container
     %h3 Ingrédients
+  .portions
+    = f.input :portions, label: false, placeholder: "Nombre de portions"
   #recipe-ingredients
     = f.simple_fields_for :recipe_ingredients do |recipe_ingredient|
       = render 'recipe_ingredient_fields', f: recipe_ingredient
