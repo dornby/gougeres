@@ -1,0 +1,5 @@
+- if @wine.picture.attachment
+  .recipe-picture
+    = cl_image_tag @wine.picture.key, width: 902, height: 600, crop: :fill, id: "recipe-picture"
+
+%h3= @wine.name

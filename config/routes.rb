@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   end
 
   resources :recipes, only: %i[index show]
+  resources :wines, only: %i[index show]
   resources :ingredient_units, only: %i[index]
 end

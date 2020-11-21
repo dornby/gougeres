@@ -1,0 +1,7 @@
+%h2 Vins
+
+.recipes
+  %ul
+    - @wines.sort_by(&:name).each do |wine|
+      .recipe
+        %h4= link_to wine.name, wine_path(wine)
