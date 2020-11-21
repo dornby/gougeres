@@ -36,7 +36,7 @@ html, body {
   position: relative;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
   font-family: "Alberto Regular";
   font-weight: 400;
   margin: 0.6rem 0;
@@ -56,6 +56,10 @@ h3 {
 
 h4 {
   font-size: 96px;
+}
+
+h5 {
+  font-size: 64px;
 }
 
 a, a:visited {
@@ -204,6 +208,23 @@ a, a:visited {
   text-decoration: underline;
 }
 
+.flex {
+  display: flex;
+  align-items: baseline;
+}
+
+.margin-left-sm {
+  margin-left: 16px;
+}
+
+.margin-left-md {
+  margin-left: 0.5rem;
+}
+
+.padding-bottom-lg {
+  padding-bottom: 48px;
+}
+
 @media #{$desktop} {
   html, body {
     font-size: 24px;
@@ -223,5 +244,9 @@ a, a:visited {
 
   h4 {
     font-size: 32px;
+  }
+
+  h5 {
+    font-size: 24px;
   }
 }
