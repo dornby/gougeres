@@ -41,6 +41,8 @@ $(document).on('turbolinks:load', function() {
         return `<option value='${ingredient.id}'>${ingredient.name}</option>`
       })
     } else {
+      ingredients.sort(compareAlphabetically)
+
       const options = ingredients.map(ingredient => {
         return `<option value='${ingredient.id}'>${ingredient.name}</option>`
       })
