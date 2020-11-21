@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_21_183615) do
+ActiveRecord::Schema.define(version: 2020_11_21_190014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,16 +72,7 @@ ActiveRecord::Schema.define(version: 2020_11_21_183615) do
     t.integer "portions"
   end
 
-  create_table "taggings", force: :cascade do |t|
-    t.bigint "wine_id"
-    t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_taggings_on_user_id"
-    t.index ["wine_id"], name: "index_taggings_on_wine_id"
-  end
-
-  create_table "tags", force: :cascade do |t|
+  create_table "reviewers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -91,17 +82,26 @@ ActiveRecord::Schema.define(version: 2020_11_21_183615) do
     t.string "name"
   end
 
-  create_table "user_wine_reviews", force: :cascade do |t|
-    t.bigint "user_id"
+  create_table "wine_reviews", force: :cascade do |t|
+    t.bigint "reviewer_id"
     t.bigint "wine_id"
     t.integer "review"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_user_wine_reviews_on_user_id"
-    t.index ["wine_id"], name: "index_user_wine_reviews_on_wine_id"
+    t.index ["reviewer_id"], name: "index_wine_reviews_on_reviewer_id"
+    t.index ["wine_id"], name: "index_wine_reviews_on_wine_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "wine_taggings", force: :cascade do |t|
+    t.bigint "wine_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id"], name: "index_wine_taggings_on_tag_id"
+    t.index ["wine_id"], name: "index_wine_taggings_on_wine_id"
+  end
+
+  create_table "wine_tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 2020_11_21_183615) do
     t.string "name"
     t.string "domain"
     t.string "variety"
-    t.float "review"
+    t.float "average_review"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
