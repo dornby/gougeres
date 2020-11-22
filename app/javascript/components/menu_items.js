@@ -2,6 +2,7 @@ require("jquery")
 
 $(document).on('turbolinks:load', function() {
   const menuButton = document.querySelector(".menu-button")
+  const hoverTrap = document.querySelector(".hover-trap")
   const menu = document.querySelector(".menu")
   const menuPopUps = menu.getElementsByClassName("pop-up")
   const booleanise = (e) => { return e === "true" }
@@ -40,5 +41,10 @@ $(document).on('turbolinks:load', function() {
         }
       })
     }
+  })
+
+  hoverTrap.addEventListener('mouseover', function(e) {
+    menuButton.classList.remove("invisible")
+    menuButton.classList.add("visible")
   })
 })
