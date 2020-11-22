@@ -42,9 +42,4 @@ $(document).on('turbolinks:load', function() {
       })
     }
   })
-
-  hoverTrap.addEventListener('mouseover', function(e) {
-    menuButton.classList.remove("invisible")
-    menuButton.classList.add("visible")
-  })
 })
