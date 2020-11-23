@@ -13,12 +13,12 @@ class Ingredient < ApplicationRecord # rubocop:disable Style/Documentation
   end
 
   def name_uniqueness
-    errors.add(:base, 'Cet ingrédient existe déjà') if name_is_unique(name)
+    errors.add(:base, 'Cet ingrédient existe déjà') if name_exists(name)
   end
 
   private
 
-  def name_is_unique(name)
+  def name_exists(name)
     Ingredient.all.map{ |i| i.name.downcase }.include?(name.downcase)
   end
 end
