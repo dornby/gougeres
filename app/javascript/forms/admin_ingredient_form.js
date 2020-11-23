@@ -37,11 +37,7 @@ $(document).on('turbolinks:load', function() {
 
         const errorMessageElement = document.querySelector(".error-message")
 
-        if (errorMessage === "Name has already been taken") {
-          errorMessageElement.innerText = "Cet ingrédient existe déjà"
-        } else if (errorMessage === "Name can't be blank") {
-          errorMessageElement.value = "Le champ doit être rempli"
-        }
+        errorMessageElement.innerText = errorMessage
       });
     });
   }
