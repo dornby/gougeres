@@ -8,7 +8,7 @@
   %h4.underlined Ingrédients
   - if @recipe.portions
     %span
-      %h5.margin-left-md= "(#{@recipe.portions} portions)"
+      %h5.margin-left-md= "- #{@recipe.portions} portion(s)"
 = render 'components/ingredients_list'
 
 %h4.underlined Recette
