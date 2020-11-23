@@ -1,3 +1,18 @@
+.input.string {
+  .error {
+    color: #b90808;
+    margin-left: 1rem;
+    font-weight: 700;
+  }
+}
+
+.input.rich_text_area {
+  .error {
+    color: #b90808;
+    font-weight: 700;
+  }
+}
+
 input.string, select.select, input.numeric {
   border-radius: 0.2rem;
   border: none;

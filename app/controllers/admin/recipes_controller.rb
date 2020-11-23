@@ -17,14 +17,24 @@ module Admin
     end
 
     def create
-      @recipe = Recipe.create!(recipe_params)
-      redirect_to recipe_path(@recipe)
+      @recipe = Recipe.new(recipe_params)
+      @ingredient = Ingredient.new
+      if @recipe.save
+        redirect_to recipe_path(@recipe)
+      else
+        render :new
+      end
     end
 
     def update
       @recipe = Recipe.find(params['id'])
-      @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe)
+      @recipe.update_attributes(recipe_params)
+      @ingredient = Ingredient.new
+      if @recipe.save
+        redirect_to recipe_path(@recipe)
+      else
+        render :edit
+      end
     end
 
     private
