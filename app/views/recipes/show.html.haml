@@ -4,12 +4,13 @@
 
 %h3= @recipe.name
 
-.flex
-  %h4.underlined Ingrédients
-  - if @recipe.portions
-    %span
-      %h5.margin-left-md= "- #{@recipe.portions} portion(s)"
-= render 'components/ingredients_list'
+.ingredients
+  .flex
+    %h4.underlined Ingrédients
+    - if @recipe.portions
+      %span
+        %h5.margin-left-md= "- #{@recipe.portions} portion(s)"
+  = render 'components/ingredients_list'
 
 %h4.underlined Recette
 .margin-left-sm.padding-bottom-lg
