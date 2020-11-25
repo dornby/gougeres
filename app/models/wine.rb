@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Wine < ApplicationRecord # rubocop:disable Style/Documentation
-  validates :name, presence: true
+  validates :name, presence: { message: 'doit être rempli' }
   validates :color, presence: true
 
   has_many :wine_taggings

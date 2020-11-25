@@ -3,7 +3,9 @@
 module Admin
   class RecipesController < AdminController # rubocop:disable Style/Documentation
     def index
-      @recipes = Recipe.all
+      @recipes = Recipe.all.group_by do |recipe|
+        recipe.name[0]
+      end
     end
 
     def new

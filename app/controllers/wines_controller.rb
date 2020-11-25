@@ -2,7 +2,9 @@
 
 class WinesController < ApplicationController # rubocop:disable Style/Documentation
   def index
-    @wines = Wine.all
+    @wines = Wine.all.group_by do |wine|
+      wine.name[0]
+    end
   end
 
   def show
