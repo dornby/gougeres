@@ -14,6 +14,17 @@ $(document).on('turbolinks:load', function() {
     })
   })
 
+  menuButton.addEventListener('mouseenter', function() {
+    menuButton.classList.remove("invisible")
+    menuButton.classList.add("visible")
+    Array.prototype.forEach.call(menuPopUps, (item) => {
+      if (booleanise(item.dataset.menuOpen)) {
+        item.classList.remove("invisible")
+        item.classList.add("slided-up")
+      }
+    })
+  })
+
   let last_known_scroll_position = 0
 
   window.addEventListener('scroll', function(e) {

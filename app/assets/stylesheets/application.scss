@@ -194,20 +194,18 @@ a, a:visited {
 
     &.invisible {
       opacity: 0;
-      visibility: hidden;
-      -moz-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
-      -o-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;;
-      -webkit-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;;
-      transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;;
+      -moz-transition: opacity 0.4s ease-in-out;
+      -o-transition: opacity 0.4s ease-in-out;
+      -webkit-transition: opacity 0.4s ease-in-out;
+      transition: opacity 0.4s ease-in-out;
     }
 
     &.visible {
       opacity: 1;
-      visibility: visible;
-      -moz-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;;
-      -o-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;;
-      -webkit-transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;;
-      transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;;
+      -moz-transition: opacity 0.4s ease-in-out;
+      -o-transition: opacity 0.4s ease-in-out;
+      -webkit-transition: opacity 0.4s ease-in-out;
+      transition: opacity 0.4s ease-in-out;
     }
   }
 
