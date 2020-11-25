@@ -25,5 +25,6 @@ require("forms/wine_color_picker")
 require("components/menu_items")
 
 require("pages/recipe_show_edit_link")
+require("pages/wine_show_edit_link")
 
 Trix.config.blockAttributes.heading1.tagName = "h4";
