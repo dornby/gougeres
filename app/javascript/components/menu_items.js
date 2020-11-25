@@ -2,7 +2,6 @@ require("jquery")
 
 $(document).on('turbolinks:load', function() {
   const menuButton = document.querySelector(".menu-button")
-  const hoverTrap = document.querySelector(".hover-trap")
   const menu = document.querySelector(".menu")
   const menuPopUps = menu.getElementsByClassName("pop-up")
   const booleanise = (e) => { return e === "true" }
@@ -16,7 +15,6 @@ $(document).on('turbolinks:load', function() {
   })
 
   let last_known_scroll_position = 0
-  let ticking = false;
 
   window.addEventListener('scroll', function(e) {
     const previous_scroll_position = last_known_scroll_position
