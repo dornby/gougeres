@@ -43,6 +43,7 @@ module Admin
       params.require(:recipe).permit(
         :name,
         :portions,
+        :is_sweet,
         :content,
         :picture,
         recipe_ingredients_attributes: recipe_ingredients_attributes
