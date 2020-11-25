@@ -68,3 +68,13 @@ input.submit {
 .submit:hover {
   box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.5);
 }
+
+input[type=range] {
+	display: block;
+  width: 100%;
+
+  &.numeric {
+    font-size: 1rem;
+    padding: 1rem 0;
+  }
+}

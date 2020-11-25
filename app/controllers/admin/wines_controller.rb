@@ -8,10 +8,12 @@ module Admin
 
     def new
       @wine = Wine.new
+      build_wine_reviews
     end
 
     def edit
       @wine = Wine.find(params['id'])
+      build_wine_reviews
     end
 
     def create
@@ -40,8 +42,15 @@ module Admin
         :name,
         :domain,
         :variety,
-        :color
+        :color,
+        wine_reviews_attributes: %i[id review reviewer_id _destroy]
       )
+    end
+
+    def build_wine_reviews
+      Reviewer.find_each do |reviewer|
+        @wine.wine_reviews.build(reviewer: reviewer) unless @wine.wine_reviews.find_by(reviewer: reviewer)
+      end
     end
   end
 end

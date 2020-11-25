@@ -4,9 +4,7 @@ class Ingredient < ApplicationRecord # rubocop:disable Style/Documentation
   validate :name_presence, :name_uniqueness
 
   has_many :recipe_ingredients
-  has_many :ingredient_units
   has_many :recipes, through: :recipe_ingredients
-  has_many :units, through: :ingredient_units
 
   def name_presence
     errors.add(:base, 'Le champ doit être remplit') if name.blank?

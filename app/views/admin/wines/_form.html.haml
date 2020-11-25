@@ -13,6 +13,10 @@
     = f.input :domain, label: false, placeholder: "Domaine de la Romanée-Conti"
     %h4 Cépage
     = f.input :variety, label: false, placeholder: "Pinot Noir"
+  %h3 Notes
+  = f.simple_fields_for :wine_reviews do |wine_review|
+    = wine_review.input :review, label: false, class: "custom-range", id: "customRange2", input_html: { max: "5", min: "0", type: "range"}
+    = wine_review.association :reviewer, as: :hidden
   %h3 Photo
   - if form == "edit" && @wine.picture.attachment
     = f.input :picture, label: false, input_html: { style: "display:none" }

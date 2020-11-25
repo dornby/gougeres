@@ -10,6 +10,8 @@ class Wine < ApplicationRecord # rubocop:disable Style/Documentation
   has_many :wine_reviews
   has_many :reviewers, through: :wine_reviews
 
+  accepts_nested_attributes_for :wine_reviews, reject_if: :all_blank, allow_destroy: true
+
   has_one_attached :picture
 
   COLORS = %w[Rouge Blanc Rosé].freeze
