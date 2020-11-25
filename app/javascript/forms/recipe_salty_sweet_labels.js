@@ -6,14 +6,19 @@ $(document).on('turbolinks:load', function() {
     const sweetLabel = document.getElementById('sweet-label')
     const recipeIsSweet = labels.dataset.isSweet
 
-    const toggleLabels = (thisElement, otherElement) => {
+    const toggleLabels = (thisElement) => {
       thisElement.classList.add("selected")
-      otherElement.classList.remove("selected")
+      Array
+        .from(labels.children)
+        .filter(function(e) { return e.id != thisElement.id })
+        .forEach(element => {
+          element.classList.remove("selected")
+        })
     }
 
-    const updateInput = (thisElement, otherElement) => {
+    const updateInput = (thisElement) => {
       if (!thisElement.classList.contains("selected")) {
-        toggleLabels(thisElement, otherElement)
+        toggleLabels(thisElement)
       }
       toggleValue(thisElement);
     }
@@ -29,17 +34,17 @@ $(document).on('turbolinks:load', function() {
     }
 
     if (recipeIsSweet === 'true') {
-      toggleLabels(sweetLabel, saltyLabel)
+      toggleLabels(sweetLabel)
+      toggleValue(sweetLabel)
     } else {
-      toggleLabels(saltyLabel, sweetLabel)
+      toggleLabels(saltyLabel)
+      toggleValue(saltyLabel)
     }
 
-    saltyLabel.addEventListener('click', function() {
-      updateInput(this, sweetLabel)
-    })
-
-    sweetLabel.addEventListener('click', function() {
-      updateInput(this, saltyLabel)
+    Array.from(labels.children).forEach(element => {
+      element.addEventListener('click', function() {
+        updateInput(this)
+      })
     })
   }
 })

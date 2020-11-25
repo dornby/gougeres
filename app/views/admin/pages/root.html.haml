@@ -12,6 +12,15 @@
       .action
         Éditer une recette existante
 .category
+  %h3= "Vins"
+  .actions
+    = link_to(new_admin_wine_path) do
+      .action
+        Créer un vin
+    = link_to(admin_wines_path) do
+      .action
+        Éditer un vin existant
+.category
   %h3= "Ingrédients"
   .actions
     %button.root_create_ingredient{"data-target" => "#ingredientModal", "data-toggle" => "modal", :type => "button"}

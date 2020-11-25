@@ -2,6 +2,7 @@
 
 class Wine < ApplicationRecord # rubocop:disable Style/Documentation
   validates :name, presence: true
+  validates :color, presence: true
 
   has_many :wine_taggings
   has_many :tags, through: :wine_taggings
@@ -10,4 +11,6 @@ class Wine < ApplicationRecord # rubocop:disable Style/Documentation
   has_many :reviewers, through: :wine_reviews
 
   has_one_attached :picture
+
+  COLORS = %w[Rouge Blanc Rosé].freeze
 end

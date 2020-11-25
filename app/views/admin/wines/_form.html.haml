@@ -1,0 +1,28 @@
+= simple_form_for [:admin, @wine] do |f|
+  %h3 Nom
+  = f.input :name, label: false, placeholder: "Romanée-Conti Millésime 1945"
+  %h3 Détails
+  .details-section
+    %h4 Robe
+    = f.hidden_field :color, value: "Rouge"
+    .color-labels{ data: { color: @wine.color.to_s } }
+      .color-label.selected#red-label
+      .color-label#white-label
+      .color-label#rose-label
+    %h4 Domaine
+    = f.input :domain, label: false, placeholder: "Domaine de la Romanée-Conti"
+    %h4 Cépage
+    = f.input :variety, label: false, placeholder: "Pinot Noir"
+  %h3 Photo
+  - if form == "edit" && @wine.picture.attachment
+    = f.input :picture, label: false, input_html: { style: "display:none" }
+    = label_tag "wine_picture", @wine.picture.filename, id: "wine-picture-button", class: 'file-chosen'
+  - else
+    = f.input :picture, label: false, input_html: { style: "display:none" }
+    = label_tag "wine_picture", "Choisir un fichier", id: "wine-picture-button"
+
+  .submit-container
+    - button_text = form == "new" ? "Créer" : "Sauvegarder"
+    = f.button :submit, button_text, class: 'submit'
+
+= render "components/flash"

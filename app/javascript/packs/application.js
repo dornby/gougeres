@@ -20,6 +20,7 @@ require("cocoon/callbacks")
 require("forms/admin_ingredient_form")
 require("forms/recipe_picture_button")
 require("forms/recipe_salty_sweet_labels")
+require("forms/wine_color_picker")
 
 require("components/menu_items")
 

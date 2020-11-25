@@ -13,9 +13,14 @@
 @import "recipes/index";
 @import "recipes/show";
 
-@import "admin/recipes/new";
-@import "admin/ingredients/new";
 @import "admin/pages/root";
+
+@import "admin/recipes/forms";
+
+@import "admin/wines/forms";
+
+@import "admin/ingredients/new";
+
 
 $desktop: "only screen and (min-width : 1200px)";
 

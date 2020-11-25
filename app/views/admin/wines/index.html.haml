@@ -1,0 +1,7 @@
+%h2 Recette à editer
+
+.recipes
+  %ul
+    - @recipes.sort_by(&:name).each do |recipe|
+      .recipe
+        %h4= link_to recipe.name, edit_admin_recipe_path(recipe)
