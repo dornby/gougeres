@@ -1,5 +1,17 @@
 - if @wine.picture.attachment
-  .recipe-picture
-    = cl_image_tag @wine.picture.key, width: 902, height: 600, crop: :fill, id: "recipe-picture"
+  -url = cl_image_path @wine.picture.key
+  - if @wine.color == "Rouge"
+    .cover-picture.wine-picture.red-border{style: "background-image:url(#{url})"}
+  - elsif @wine.color == "Blanc"
+    .cover-picture.wine-picture.white-border{style: "background-image:url(#{url})"}
+  - elsif @wine.color == "Rosé"
+    .cover-picture.wine-picture.rose-border{style: "background-image:url(#{url})"}
+      = cl_image_tag @wine.picture.key, id: "wine-picture"
 
 %h3= @wine.name
+- if !@wine.domain.blank?
+  %p= "Domaine : #{@wine.domain}"
+- if !@wine.variety.blank?
+  %p= "Cépage : #{@wine.variety}"
+- @wine.wine_reviews.each do |wine_review|
+  %p= "Note (#{wine_review.reviewer.name}) : #{wine_review.review}"

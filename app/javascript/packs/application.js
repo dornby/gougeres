@@ -21,6 +21,7 @@ require("forms/admin_ingredient_form")
 require("forms/recipe_picture_button")
 require("forms/recipe_salty_sweet_labels")
 require("forms/wine_color_picker")
+require("forms/wine_picture_button")
 require("forms/wine_review_slider")
 
 require("components/menu_items")

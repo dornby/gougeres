@@ -1,13 +1,8 @@
-img#recipe-picture {
-  display: block;
-  width: 101vw;
-  margin-left: 50%;
-  margin-top: -1%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
+.recipe-picture {
+  height: 600px;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
 }
 
 ol.ingredient-list {
@@ -52,20 +47,10 @@ li.ingredient-item {
 @media only screen and (min-width : 1200px) {
 
   .recipe-picture {
-    margin-top: 2rem;
-  }
-
-  img#recipe-picture {
-    width: 675px;
     height: 450px;
-    margin-left: 0;
-    margin-top: 0;
-    border-radius: 2rem;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(0%);
-    -ms-transform: translateX(0%);
-    -o-transform: translateX(0%);
-    transform: translateX(0%);
+    width: 700px;
+    background-size:cover;
+    background-position:center;
   }
 
   .ingredient-container {

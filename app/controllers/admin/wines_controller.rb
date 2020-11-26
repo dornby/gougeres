@@ -45,6 +45,7 @@ module Admin
         :domain,
         :variety,
         :color,
+        :picture,
         wine_reviews_attributes: %i[id review reviewer_id _destroy]
       )
     end

@@ -1,6 +1,6 @@
 - if @recipe.picture.attachment
-  .recipe-picture
-    = cl_image_tag @recipe.picture.key, width: 902, height: 600, crop: :fill, id: "recipe-picture"
+  - url = cl_image_path @recipe.picture.key
+  .cover-picture.recipe-picture{style: "background-image:url(#{url})"}
 
 %h3= @recipe.name
 
