@@ -20,6 +20,10 @@ module Admin
 
     def create
       @wine = Wine.new(wine_params)
+      @wine.wine_reviews.each do |wine_review|
+        wine_review.destroy if wine_review.review == -1
+      end
+      @wine.average_review = (@wine.wine_reviews.reject{ |wr| wr.review == -1 }.map(&:review).sum / @wine.wine_reviews.size.to_f).round(2)
       if @wine.save
         redirect_to wine_path(@wine)
       else
@@ -30,6 +34,10 @@ module Admin
     def update
       @wine = Wine.find(params['id'])
       @wine.update_attributes(wine_params)
+      @wine.wine_reviews.each do |wine_review|
+        wine_review.destroy if wine_review.review == -1
+      end
+      @wine.average_review = (@wine.wine_reviews.reject{ |wr| wr.review == -1 }.map(&:review).sum / @wine.wine_reviews.size.to_f).round(2)
       if @wine.save
         redirect_to wine_path(@wine)
       else

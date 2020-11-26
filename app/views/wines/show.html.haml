@@ -9,9 +9,14 @@
       = cl_image_tag @wine.picture.key, id: "wine-picture"
 
 %h3= @wine.name
+.wine-show-reviews
+  .wine-show-review#average-review{style: "background-image:url(#{asset_path("review_average")})"}
+    = @wine.average_review
+  - @wine.wine_reviews.each do |wine_review|
+    - asset_path = asset_path("review_#{wine_review.reviewer.name.downcase}")
+    .wine-show-review{style: "background-image:url(#{asset_path})"}
+      = wine_review.review
 - if !@wine.domain.blank?
   %p= "Domaine : #{@wine.domain}"
 - if !@wine.variety.blank?
   %p= "Cépage : #{@wine.variety}"
-- @wine.wine_reviews.each do |wine_review|
-  %p= "Note (#{wine_review.reviewer.name}) : #{wine_review.review}"

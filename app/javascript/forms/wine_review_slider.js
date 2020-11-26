@@ -1,5 +1,3 @@
-import Rails from "@rails/ujs";
-
 $(document).on('turbolinks:load', function() {
   const wineReviewContainers = document.querySelectorAll(".wine-review-container")
   const sliders = document.querySelectorAll("input[type='range']")
@@ -8,12 +6,21 @@ $(document).on('turbolinks:load', function() {
 
   Array.from(wineReviewContainers).forEach((element, index) => {
     if (!(sliders[index].value)) {
-      sliders[index].value = 5
+      sliders[index].value = -1
     }
+
     rangeValues[index].innerText = sliders[index].value
 
+    if (sliders[index].value == -1) {
+      rangeValues[index].innerText = "Pas de review"
+    }
+
     sliders[index].addEventListener('input', function() {
-      rangeValues[index].innerText = this.value
+      if (this.value != -1) {
+        rangeValues[index].innerText = this.value
+      } else {
+        rangeValues[index].innerText = "Pas de review"
+      }
     })
 
     $.ajax({
