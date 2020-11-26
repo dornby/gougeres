@@ -31,7 +31,15 @@ $(document).on('turbolinks:load', function() {
     const previous_scroll_position = last_known_scroll_position
     last_known_scroll_position = window.scrollY;
 
-    if (previous_scroll_position < last_known_scroll_position) { // scroll down
+    const scrollThreshold = () => {
+      if (window.innerWidth > 1200) {
+        return 100
+      } else {
+        return 300
+      }
+    }
+
+    if (previous_scroll_position < last_known_scroll_position && last_known_scroll_position > scrollThreshold()) { // scroll down
       menuButton.classList.remove("visible")
       menuButton.classList.add("invisible")
       Array.prototype.forEach.call(menuPopUps, (item) => {
