@@ -62,3 +62,19 @@ input.string#wine_name {
   white-space: nowrap;
   overflow: hidden;
 }
+
+.wine-review {
+  display: flex;
+  width: 100%;
+}
+
+.wine-review-input {
+  width: 60%;
+}
+
+.wine-review-value {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  padding-bottom: 0.2rem;
+}

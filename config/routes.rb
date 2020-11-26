@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
     resources :ingredients, only: %i[index create]
     resources :wines, only: %i[index edit update new create]
+    resources :reviewers, only: :show
   end
 
   resources :recipes, only: %i[index show]
