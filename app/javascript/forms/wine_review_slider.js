@@ -7,7 +7,9 @@ $(document).on('turbolinks:load', function() {
   const hiddenInputs = document.querySelectorAll("input.hidden")
 
   Array.from(wineReviewContainers).forEach((element, index) => {
-    sliders[index].value = 5
+    if (!(sliders[index].value)) {
+      sliders[index].value = 5
+    }
     rangeValues[index].innerText = sliders[index].value
 
     sliders[index].addEventListener('input', function() {
