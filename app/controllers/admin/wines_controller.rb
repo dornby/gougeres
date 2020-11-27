@@ -2,6 +2,8 @@
 
 module Admin
   class WinesController < AdminController # rubocop:disable Style/Documentation
+    before_action :destroy_discardable_reviews, only: %i[create update]
+
     def index
       @wines = Wine.all.group_by do |wine|
         wine.name[0]
@@ -20,11 +22,8 @@ module Admin
 
     def create
       @wine = Wine.new(wine_params)
-      @wine.wine_reviews.each do |wine_review|
-        wine_review.destroy if wine_review.review == -1
-      end
-      @wine.average_review = (@wine.wine_reviews.reject{ |wr| wr.review == -1 }.map(&:review).sum / @wine.wine_reviews.size.to_f).round(2)
       if @wine.save
+        compute_average_review
         redirect_to wine_path(@wine)
       else
         render :new
@@ -34,11 +33,8 @@ module Admin
     def update
       @wine = Wine.find(params['id'])
       @wine.update_attributes(wine_params)
-      @wine.wine_reviews.each do |wine_review|
-        wine_review.destroy if wine_review.review == -1
-      end
-      @wine.average_review = (@wine.wine_reviews.reject{ |wr| wr.review == -1 }.map(&:review).sum / @wine.wine_reviews.size.to_f).round(2)
       if @wine.save
+        compute_average_review
         redirect_to wine_path(@wine)
       else
         render :edit
@@ -61,6 +57,17 @@ module Admin
     def build_wine_reviews
       Reviewer.find_each do |reviewer|
         @wine.wine_reviews.build(reviewer: reviewer) unless @wine.wine_reviews.find_by(reviewer: reviewer)
+      end
+    end
+
+    def compute_average_review
+      @wine.average_review = @wine.wine_reviews.average(:review).round(2)
+      @wine.save
+    end
+
+    def destroy_discardable_reviews
+      params[:wine][:wine_reviews_attributes].each do |params_wr|
+        params_wr[1]['_destroy'] = '1' if params_wr[1]['review'] == '-1'
       end
     end
   end
