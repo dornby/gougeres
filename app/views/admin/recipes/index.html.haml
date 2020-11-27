@@ -6,4 +6,4 @@
       %h2= letter
       - recipes.each do |recipe|
         .recipe
-          %h4= link_to recipe.name, recipe_path(recipe)
+          %h4= link_to recipe.name, edit_admin_recipe_path(recipe)

@@ -6,4 +6,4 @@
       %h2= letter
       - wines.each do |wine|
         .recipe
-          %h4= link_to wine.name, wine_path(wine)
+          %h4= link_to wine.name, edit_admin_wine_path(wine)
