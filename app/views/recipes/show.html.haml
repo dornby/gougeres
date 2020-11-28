@@ -1,3 +1,8 @@
+- content_for :meta_title, @recipe.name
+- if @recipe.picture.attachment
+  - recipe_picture = cl_image_path(@recipe.picture.key)
+  - content_for :meta_image, recipe_picture
+
 - if @recipe.picture.attachment
   - url = cl_image_path @recipe.picture.key
   .cover-picture.recipe-picture{style: "background-image:url(#{url})"}
