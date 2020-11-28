@@ -1,5 +1,5 @@
 - content_for :meta_title, @wine.name
-- content_for :meta_description, "Glouglou, ce vin est validé par Alice et Hugo !"
+- content_for :meta_description, "🍷 Glouglou, ce vin est validé par Alice et Hugo !"
 - if @wine.picture.attachment
   - wine_picture = cl_image_path(@wine.picture.key)
   - content_for :meta_image, wine_picture
