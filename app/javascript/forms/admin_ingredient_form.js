@@ -7,13 +7,18 @@ $(document).on('turbolinks:load', function() {
     const ingredientSubmit = document.getElementById('ingredient-submit')
     const ingredientName = document.getElementById('ingredient_name')
     const successAlert = document.querySelector('.alert-container')
+    const ingredientField = document.querySelector('#ingredient_name')
+
+    $('#ingredientModal').on('shown.bs.modal', function () {
+      ingredientField.focus();
+    })
 
     ingredientSubmit.addEventListener('click', () => {
       Rails.fire(ingredientForm, 'submit')
     })
 
     jQuery(function() {
-      $('[data-js-tutorial-form]').on("ajax:success", function(event, data, status, xhr){
+      $('[data-js-tutorial-form]').on("ajax:success", function(){
           $('#ingredientModal').modal('hide')
           ingredientName.value = '';
           successAlert.style.display = "flex";
