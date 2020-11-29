@@ -8,6 +8,6 @@ class WinesController < ApplicationController # rubocop:disable Style/Documentat
   end
 
   def show
-    @wine = Wine.find(params['id'])
+    @wine = Wine.friendly.find(params[:id])
   end
 end

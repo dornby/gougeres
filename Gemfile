@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap'
 gem 'cocoon'
 gem 'font-awesome-sass'
+gem 'friendly_id', '~> 5.4.0'
 gem 'haml'
 gem 'simple_form'
 gem 'cloudinary'

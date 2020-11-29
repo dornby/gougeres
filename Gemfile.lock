@@ -97,6 +97,8 @@ GEM
     ffi (1.13.1)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
+    friendly_id (5.4.1)
+      activerecord (>= 4.0.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     haml (5.2.0)
@@ -253,6 +255,7 @@ DEPENDENCIES
   cocoon
   dotenv-rails
   font-awesome-sass
+  friendly_id (~> 5.4.0)
   haml
   jbuilder (~> 2.7)
   listen (~> 3.2)
