@@ -16,8 +16,8 @@ $(document).on('turbolinks:load', function() {
 
       shareButton.addEventListener('click', function() {
         navigator.share({
-          title: 'WebShare API Demo',
-          url: 'https://codepen.io/ayoisaiah/pen/YbNazJ'
+          title: document.querySelector('h3').innerText,
+          url: window.location.href
         })
       })
 
