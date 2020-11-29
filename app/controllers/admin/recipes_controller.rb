@@ -14,7 +14,7 @@ module Admin
     end
 
     def edit
-      @recipe = Recipe.find(params['id'])
+      @recipe = Recipe.friendly.find(params[:id])
       @ingredient = Ingredient.new
     end
 
@@ -29,7 +29,7 @@ module Admin
     end
 
     def update
-      @recipe = Recipe.find(params['id'])
+      @recipe = Recipe.friendly.find(params[:id])
       @recipe.update_attributes(recipe_params)
       @ingredient = Ingredient.new
       if @recipe.save

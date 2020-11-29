@@ -82,11 +82,22 @@ a, a:visited {
 }
 
 .menu {
+  right: 1rem;
+}
+
+.share {
+  left: 1.5rem;
+
+  &.click-through {
+    visibility: hidden;
+  }
+}
+
+.menu, .share {
   display: flex;
   flex-direction: column-reverse;
   position: fixed;
   bottom: 0.5rem;
-  right: 1rem;
 
   .menu-item {
     display: block;
@@ -212,6 +223,51 @@ a, a:visited {
   }
 
   .menu-item.menu-button:hover {
+    cursor: pointer;
+  }
+
+  .menu-item.share-button {
+    z-index: 1;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
+    i {
+      background: #a53ea5;
+      color: #f7f7f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      margin-right: 0.6rem;
+      border-radius: 100%;
+      box-shadow: 5px 5px 20px -2px rgb(0,0,0);
+      -webkit-box-shadow: 5px 5px 20px -2px rgb(0,0,0);
+    }
+
+    &.invisible {
+      opacity: 0;
+      -moz-transition: opacity 0.4s ease-in-out;
+      -o-transition: opacity 0.4s ease-in-out;
+      -webkit-transition: opacity 0.4s ease-in-out;
+      transition: opacity 0.4s ease-in-out;
+    }
+
+    &.visible {
+      opacity: 1;
+      -moz-transition: opacity 0.4s ease-in-out;
+      -o-transition: opacity 0.4s ease-in-out;
+      -webkit-transition: opacity 0.4s ease-in-out;
+      transition: opacity 0.4s ease-in-out;
+    }
+  }
+
+  .menu-item.share-button:hover {
     cursor: pointer;
   }
 }

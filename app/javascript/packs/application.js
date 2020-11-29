@@ -24,7 +24,8 @@ require("forms/wine_color_picker")
 require("forms/wine_picture_button")
 require("forms/wine_review_slider")
 
-require("components/menu_items")
+require("components/menu")
+require("components/share_button")
 
 require("pages/recipe_show_edit_link")
 require("pages/wine_show_edit_link")

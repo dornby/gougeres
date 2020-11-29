@@ -27,7 +27,7 @@ $(document).on('turbolinks:load', function() {
 
   let last_known_scroll_position = 0
 
-  window.addEventListener('scroll', function(e) {
+  window.addEventListener('scroll', function() {
     const previous_scroll_position = last_known_scroll_position
     last_known_scroll_position = window.scrollY;
 

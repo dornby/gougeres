@@ -16,7 +16,7 @@ module Admin
     end
 
     def edit
-      @wine = Wine.find(params['id'])
+      @wine = Wine.friendly.find(params[:id])
       build_wine_reviews
     end
 
@@ -31,7 +31,7 @@ module Admin
     end
 
     def update
-      @wine = Wine.find(params['id'])
+      @wine = Wine.friendly.find(params[:id])
       @wine.update_attributes(wine_params)
       if @wine.save
         compute_average_review

@@ -1,7 +1,7 @@
 require("jquery")
 
 $(document).on('turbolinks:load', function() {
-  const pathRegExp = RegExp('/recipes/[0-9]+$')
+  const pathRegExp = RegExp('recipes/((?=[^new])[A-Za-z0-9\-\_]+)$')
   const path = window.location.pathname
 
   if (pathRegExp.test(path)) {
