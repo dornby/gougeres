@@ -13,6 +13,43 @@ $(document).on('turbolinks:load', function() {
       ingredientField.focus();
     })
 
+    ingredientField.addEventListener('input', () => {
+      const query = ingredientField.value.toLowerCase();
+      const ingredientsListContainer = document.querySelector('.queried-ingredients')
+      const ingredientsList = document.querySelector('#ingredients-list')
+
+      if (query != "") {
+        $.ajax({
+          type: 'GET',
+          url: `/admin/ingredients/queried_index?q=` + query,
+          success: function(ingredients) {
+            if (ingredients.length > 0) {
+              ingredientsList.innerHTML = ""
+              ingredientsListContainer.classList.remove('display-none')
+              ingredients.forEach((element, index) => {
+                if (index < 5) {
+                  ingredientsList.insertAdjacentHTML(
+                    'beforeend',
+                    `<li>${element.name}</li>`
+                  )
+                }
+              })
+              if (ingredients.length > 5) {
+                ingredientsList.insertAdjacentHTML(
+                  'beforeend',
+                  `<li>...</li>`
+                )
+              }
+            } else if (ingredients.length === 0) {
+              ingredientsListContainer.classList.add('display-none')
+            }
+          }
+        });
+      } else {
+        ingredientsListContainer.classList.add('display-none')
+      }
+    })
+
     ingredientSubmit.addEventListener('click', () => {
       Rails.fire(ingredientForm, 'submit')
     })

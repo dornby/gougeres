@@ -10,6 +10,14 @@ module Admin
       end
     end
 
+    def queried_index
+      @ingredients = Ingredient.order(:name).where("lower(name) LIKE ?", "%#{params[:q]}%")
+
+      respond_to do |format|
+        format.json { render json: @ingredients }
+      end
+    end
+
     def create
       @ingredient = Ingredient.create!(ingredient_params)
     end

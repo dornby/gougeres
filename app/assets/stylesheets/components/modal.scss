@@ -1,8 +1,16 @@
 .error-message {
 	color: #b90808;
-	margin-top: 0.2rem;
+	margin: 0.5rem 0;
 	font-size: 0.7rem;
 	height: 0.7rem;
+}
+
+.queried-ingredients {
+	font-size: 0.7rem;
+
+	&.display-none {
+		display: none;
+	}
 }
 
 .create-ingredient, #ingredient-submit {
