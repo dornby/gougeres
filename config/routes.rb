@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :ingredients, only: %i[index create] do
       collection do
         get '/queried_index', to: 'ingredients#queried_index'
+        get '/last', to: 'ingredients#last'
       end
     end
     resources :wines, only: %i[index edit update new create] do

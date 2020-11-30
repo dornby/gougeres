@@ -7,8 +7,10 @@
         - sorted_units = Unit.order(:name)
         = f.association :unit, label: false, placeholder: "g", as: :select, collection: sorted_units
       .ingredient-field.ingredient-name
-        - sorted_ingredients = Ingredient.order(:name)
-        = f.association :ingredient, label: false, collection: sorted_ingredients, input_html: { prompt: "Choisir un ingrédient" }
+        .ingredient-text-input-container
+          %input.ingredient-name-text-input.string{type: "text", placeholder: "Commencer à tapper un ingrédient"}
+          .ingredient-autocomplete-results.invisible
+        = f.association :ingredient, label: false, input_html: { prompt: "Choisir un ingrédient" }, as: :hidden
     .ingredient-fields-line
       = f.input :comment, label: false, placeholder: "De préférence à température ambiante", input_html: { class: "ingredient-comment-field" }
   .ingredient-field.delete-btn

@@ -1,74 +1,154 @@
-require("jquery")
-require("@nathanvda/cocoon")
+import Rails from "@rails/ujs";
 
 $(document).on('turbolinks:load', function() {
+  const ingredientForm = document.getElementById('new_ingredient')
 
-  const compareCreatedAt = (a, b) => {
-    if ( a.created_at > b.created_at ){
-      return -1;
-    }
-    if ( a.created_at < b.created_at ){
-      return 1;
-    }
-    return 0;
+  const addSeparator = (e) => {
+    e.insertAdjacentHTML(
+      'beforeend',
+      `<div class="ingredient-autocomplete-separator"><div class="line"></div></div>`
+    )
   }
 
-  const compareAlphabetically = (a, b) => {
-    if ( a.name < b.name ){
-      return -1;
-    }
-    if ( a.name > b.name ){
-      return 1;
-    }
-    return 0;
+  const addResult = (e, ingredient) => {
+    e.insertAdjacentHTML(
+      'beforeend',
+      `<div tabindex="0" class="ingredient-autocomplete-result" data-id="${ingredient.id}">${ingredient.name}</div>`
+    )
   }
 
-  const ingredientOptions = (ingredients) => {
-    const sortedIngredients = ingredients
-    const lastIngredient = sortedIngredients.sort(compareCreatedAt)[0]
-    const lastIngredientTimestamp = Date.parse(lastIngredient.created_at)
-    const nowTimestamp = Date.parse(new Date().toISOString())
-    if ((nowTimestamp - lastIngredientTimestamp) < 300000) {
-      let alphabeticalIngredients = ingredients.sort(compareAlphabetically)
-
-      alphabeticalIngredients = alphabeticalIngredients.filter(function(ingredient) {
-        return ingredient.id !== lastIngredient.id;
-      })
-
-      alphabeticalIngredients.unshift(lastIngredient)
-
-      return alphabeticalIngredients.map(ingredient => {
-        return `<option value='${ingredient.id}'>${ingredient.name}</option>`
-      })
-    } else {
-      ingredients.sort(compareAlphabetically)
-
-      const options = ingredients.map(ingredient => {
-        return `<option value='${ingredient.id}'>${ingredient.name}</option>`
-      })
-
-      options.unshift(
-        `<option value="">Choisir un ingrédient</option>`
-      )
-
-      return options
-    }
+  const handleClick = (textInput, element, ingredientAutocompleteResults, hiddenInput) => {
+    textInput.value = element.innerText
+    ingredientAutocompleteResults.classList.add('invisible')
+    hiddenInput.value = element.dataset.id
   }
+
+  const addClickonAllResults = (allResults, textInput, ingredientAutocompleteResults, hiddenInput) => {
+    allResults.forEach(result => {
+      result.addEventListener('click', function() {
+        handleClick(textInput, this, ingredientAutocompleteResults, hiddenInput)
+      })
+    })
+  }
+
+  const handleForEachIngredient = (index, ingredientAutocompleteResults, ingredient, textInput, hiddenInput, ingredients) => {
+    if (index > 0) {
+      addSeparator(ingredientAutocompleteResults)
+    }
+    addResult(ingredientAutocompleteResults, ingredient)
+
+    const allResults = document.querySelectorAll(".ingredient-autocomplete-result")
+
+    addClickonAllResults(allResults, textInput, ingredientAutocompleteResults, hiddenInput, ingredients)
+  }
+
+  const ajaxQueryIngredients = (query, textInput, hiddenInput, insertedItem) => {
+    $.ajax({
+      type: 'GET',
+      url: `/admin/ingredients/queried_index?q=` + query,
+      success: function(ingredients) {
+        const ingredientAutocompleteResults = insertedItem.querySelector('.ingredient-autocomplete-results')
+        ingredientAutocompleteResults.innerHTML = ""
+        ingredientAutocompleteResults.classList.remove('invisible')
+        if (ingredients.length > 0) {
+          document.addEventListener('click', function(event) {
+            if (!(textInput.contains(event.target)))
+            ingredientAutocompleteResults.classList.add('invisible')
+          })
+          ingredients.forEach((ingredient, index) => {
+            handleForEachIngredient(index, ingredientAutocompleteResults, ingredient, textInput, hiddenInput, ingredients)
+          })
+        }
+      }
+    });
+  }
+
+  const submitForm = (ingredientForm, hiddenInput) => {
+    Rails.fire(ingredientForm, 'submit')
+    jQuery(function() {
+      $('[data-js-tutorial-form]').on("ajax:success", function(){
+        $.ajax({
+          type: 'GET',
+          url: `/admin/ingredients/last`,
+          success: function(last_ingredient) {
+            hiddenInput.value = last_ingredient.id
+          }
+        });
+      });
+
+      $('[data-js-tutorial-form]').on("ajax:error", function(event) {
+        const detail = event.detail;
+        const errorFull = detail[2].responseText;
+
+        const errorRegExp = /Validation failed: /
+        const breakRegExp = /Extracted source/
+        const errorObject = errorRegExp.exec(errorFull)
+        const breakObject = breakRegExp.exec(errorFull)
+        const errorMessage = errorFull.substring(
+          errorObject.index + 19, breakObject.index - 1
+        )
+
+        const errorMessageElement = document.querySelector(".error-message")
+
+        errorMessageElement.innerText = errorMessage
+      });
+    });
+  }
+
+  const handleAutocomplete = (element) => {
+    const textInput = element.querySelector('.ingredient-name-text-input')
+    const hiddenInput = element.querySelector('input.hidden')
+
+    textInput.addEventListener('focus', function() {
+      const query = textInput.value.toLowerCase();
+      ajaxQueryIngredients(query, textInput, hiddenInput, element)
+
+      textInput.addEventListener('input', function() {
+        const query = textInput.value.toLowerCase();
+        ajaxQueryIngredients(query, textInput, hiddenInput, element)
+      })
+
+      document.addEventListener('keydown', function(event) {
+        if (event.metaKey && event.key == "Enter") {
+          event.preventDefault()
+          const ingredientAutocompleteResults = element.querySelector('.ingredient-autocomplete-results')
+          const firstResult = ingredientAutocompleteResults.querySelector('.ingredient-autocomplete-result')
+          if (firstResult) {
+            textInput.value = firstResult.innerText
+            hiddenInput.value = firstResult.dataset.id
+          } else {
+            const input = ingredientForm.querySelector('input')
+            input.value = textInput.value
+            submitForm(ingredientForm, hiddenInput)
+          }
+          ingredientAutocompleteResults.classList.add('invisible')
+        }
+      })
+    })
+  }
+
+  const textInputs = document.querySelectorAll('.ingredient-name-text-input')
+
+  $.ajax({
+    type: 'GET',
+    url: `/admin/ingredients/queried_index?q=`,
+    success: function(ingredients) {
+      textInputs.forEach(e => {
+        const thisHidden = e.parentElement.parentElement.querySelector('input.hidden')
+        ingredients.filter
+        e.value = ingredients.filter(x => x.id == thisHidden.value)[0].name
+      })
+    }
+  });
+
+  textInputs.forEach(element => {
+    handleAutocomplete(element.parentElement.parentElement.parentElement.parentElement.parentElement)
+  })
 
   jQuery(function() {
     $('#recipe-ingredients')
       .on('cocoon:before-insert', function(_e, insertedItem, _originalEvent) {
-        $.ajax({
-          type: 'GET',
-          url: "/admin/ingredients",
-          success: function(data) {
-            var selectElement = insertedItem.find(".ingredient-name").find("select")
-            selectElement.empty();
-            selectElement.html(
-              ingredientOptions(data)
-            );
-          }
-        });
+        handleAutocomplete(insertedItem[0])
       })
   })
 })

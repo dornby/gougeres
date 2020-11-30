@@ -18,6 +18,14 @@ module Admin
       end
     end
 
+    def last
+      @ingredient = Ingredient.last
+
+      respond_to do |format|
+        format.json { render json: @ingredient }
+      end
+    end
+
     def create
       @ingredient = Ingredient.create!(ingredient_params)
     end
