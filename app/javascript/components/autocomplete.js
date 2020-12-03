@@ -160,11 +160,11 @@ $(document).on('turbolinks:load', function() {
           const ingredientAutocompleteResults = selectedField.parentElement.querySelector('.ingredient-autocomplete-results')
           const firstResult = ingredientAutocompleteResults.querySelector('.ingredient-autocomplete-result')
           if (firstResult) {
-            selectedField.value = firstResult.innerText
+            selectedField.value = firstResult.innerText.trim()
             hiddenInput.value = firstResult.dataset.id
           } else {
             const input = ingredientForm.querySelector('input')
-            input.value = selectedField.value
+            input.value = selectedField.value.trim()
             submitForm(ingredientForm, hiddenInput, addIngredientHint)
           }
           ingredientAutocompleteResults.classList.add('invisible')
