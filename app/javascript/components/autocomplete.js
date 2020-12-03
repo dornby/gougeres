@@ -130,30 +130,42 @@ $(document).on('turbolinks:load', function() {
       textInput.addEventListener('focus', function() {
         const query = textInput.value.toLowerCase();
         ajaxQueryIngredients(query, textInput, hiddenInput, element, addIngredientHint)
+        textInput.classList.add('selected-field')
 
         textInput.addEventListener('input', function() {
           const query = textInput.value.toLowerCase();
           ajaxQueryIngredients(query, textInput, hiddenInput, element, addIngredientHint)
         })
+      })
 
-        document.addEventListener('keydown', function(event) {
-          if (event.metaKey && event.key == "Enter") {
-            event.preventDefault()
-            const ingredientAutocompleteResults = element.querySelector('.ingredient-autocomplete-results')
-            const firstResult = ingredientAutocompleteResults.querySelector('.ingredient-autocomplete-result')
-            if (firstResult) {
-              textInput.value = firstResult.innerText
-              hiddenInput.value = firstResult.dataset.id
-            } else {
-              const input = ingredientForm.querySelector('input')
-              input.value = textInput.value
-              submitForm(ingredientForm, hiddenInput, addIngredientHint)
-            }
-            ingredientAutocompleteResults.classList.add('invisible')
-          }
-        })
+      textInput.addEventListener('focusout', function() {
+        textInput.classList.remove('selected-field')
       })
     }
+
+    document.addEventListener('keydown', function(event) {
+      if (event.metaKey && event.key == "Enter") {
+        const selectedField = document.querySelector('.selected-field')
+
+        if (selectedField) {
+          const element = selectedField.parentElement.parentElement
+          const hiddenInput = element.querySelector('input.hidden')
+          const addIngredientHint = element.querySelector(".hint.add-ingredient")
+          event.preventDefault()
+          const ingredientAutocompleteResults = selectedField.parentElement.querySelector('.ingredient-autocomplete-results')
+          const firstResult = ingredientAutocompleteResults.querySelector('.ingredient-autocomplete-result')
+          if (firstResult) {
+            selectedField.value = firstResult.innerText
+            hiddenInput.value = firstResult.dataset.id
+          } else {
+            const input = ingredientForm.querySelector('input')
+            input.value = selectedField.value
+            submitForm(ingredientForm, hiddenInput, addIngredientHint)
+          }
+          ingredientAutocompleteResults.classList.add('invisible')
+        }
+      }
+    })
 
     const textInputs = document.querySelectorAll('.ingredient-name-text-input')
 
