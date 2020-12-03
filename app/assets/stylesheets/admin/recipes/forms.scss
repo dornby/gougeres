@@ -18,20 +18,32 @@ input.string#recipe_name {
     box-sizing: border-box;
   }
 
-  .add-ingredient-hint {
+  .hint {
     width: 3rem;
     height: calc(100% - 0.8rem);
     color: white;
     position: absolute;
-    background: #74d5a8;
-    right: 0;
-    top: 0;
     margin: 0.4rem;
     font-size: 0.7rem;
     justify-content: center;
     align-items: center;
     border-radius: 1rem;
-    display: none;
+
+    &.add-ingredient {
+      background: #74d5a8;
+      display: none;
+      right: 0;
+      top: 0;
+    }
+
+    &.select-ingredient {
+      background: #d8d8d8;
+      display: flex;
+      margin-top: 0.3rem;
+      right: 0;
+      height: 1.4rem;
+      z-index: 99999;
+    }
   }
 
   .ingredient-autocomplete-results {
@@ -63,7 +75,7 @@ input.string#recipe_name {
       }
     }
 
-    .ingredient-autocomplete-result, button#ingredient-form {
+    .ingredient-autocomplete-result {
       font-size: 0.8rem;
       padding: 0.5rem 1rem;
       cursor: pointer;
@@ -73,13 +85,10 @@ input.string#recipe_name {
       width: 100%;
       box-sizing: border-box;
       text-align: left;
+      position: relative
     }
 
-    button#ingredient-form {
-      font-weight: bold;
-    }
-
-    .ingredient-autocomplete-result:hover, button#ingredient-form:hover {
+    .ingredient-autocomplete-result:hover {
       background: #f0f0f0;
     }
   }

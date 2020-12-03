@@ -10,7 +10,7 @@
         .ingredient-text-input-container
           %input.ingredient-name-text-input.string{type: "text", placeholder: "Commencer à tapper un ingrédient"}
           .ingredient-autocomplete-results.invisible
-          .add-ingredient-hint= "⌘＋⏎"
+          .hint.add-ingredient= "⌘＋⏎"
         = f.association :ingredient, label: false, input_html: { prompt: "Choisir un ingrédient" }, as: :hidden
     .ingredient-fields-line
       = f.input :comment, label: false, placeholder: "De préférence à température ambiante", input_html: { class: "ingredient-comment-field" }
