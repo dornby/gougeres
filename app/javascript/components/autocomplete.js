@@ -4,6 +4,11 @@ $(document).on('turbolinks:load', function() {
   const ingredientForm = document.getElementById('new_ingredient')
 
   if (ingredientForm) {
+    if (typeof(String.prototype.trim) === "undefined") {
+      String.prototype.trim = function() {
+        return String(this).replace(/^\s+|\s+$/g, '');
+      };
+    }
     const addSeparator = (e) => {
       e.insertAdjacentHTML(
         'beforeend',
@@ -28,7 +33,7 @@ $(document).on('turbolinks:load', function() {
     }
 
     const handleClick = (textInput, element, ingredientAutocompleteResults, hiddenInput) => {
-      textInput.value = element.innerText
+      textInput.value = element.innerText.trim()
       ingredientAutocompleteResults.classList.add('invisible')
       hiddenInput.value = element.dataset.id
     }
