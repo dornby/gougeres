@@ -1,3 +1,5 @@
+= simple_form_for [:admin, @ingredient], remote: true, data: {'js-tutorial-form' => true} do |f|
+  = f.hidden_field :name, label: false, placeholder: "Farine T45", input_html: { autofocus: true }
 = simple_form_for [:admin, @recipe] do |f|
   %h3 Nom
   = f.input :name, label: false, placeholder: "Gougères au comté"
@@ -17,9 +19,6 @@
     .links.add-ingredient
       = link_to_add_association(f, :recipe_ingredients) do
         %i.fas.fa-plus-circle
-      .component= "ou"
-      %button.component.create-ingredient#ingredient-form{"data-target" => "#ingredientModal", "data-toggle" => "modal", :type => "button"}
-        Créer un ingrédient
   %h3 Contenu
   = f.input :content, as: :rich_text_area, label: false
   %h3 Photo

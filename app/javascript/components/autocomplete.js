@@ -42,7 +42,7 @@ $(document).on('turbolinks:load', function() {
     addClickonAllResults(allResults, textInput, ingredientAutocompleteResults, hiddenInput, ingredients)
   }
 
-  const ajaxQueryIngredients = (query, textInput, hiddenInput, insertedItem) => {
+  const ajaxQueryIngredients = (query, textInput, hiddenInput, insertedItem, addIngredientHint) => {
     $.ajax({
       type: 'GET',
       url: `/admin/ingredients/queried_index?q=` + query,
@@ -52,18 +52,23 @@ $(document).on('turbolinks:load', function() {
         ingredientAutocompleteResults.classList.remove('invisible')
         if (ingredients.length > 0) {
           document.addEventListener('click', function(event) {
-            if (!(textInput.contains(event.target)))
-            ingredientAutocompleteResults.classList.add('invisible')
+            if (!(textInput.contains(event.target))) {
+              addIngredientHint.style.display = "none"
+              ingredientAutocompleteResults.classList.add('invisible')
+            }
           })
           ingredients.forEach((ingredient, index) => {
             handleForEachIngredient(index, ingredientAutocompleteResults, ingredient, textInput, hiddenInput, ingredients)
           })
+        } else {
+          ingredientAutocompleteResults.classList.add('invisible')
+          addIngredientHint.style.display = "flex"
         }
       }
     });
   }
 
-  const submitForm = (ingredientForm, hiddenInput) => {
+  const submitForm = (ingredientForm, hiddenInput, addIngredientHint) => {
     Rails.fire(ingredientForm, 'submit')
     jQuery(function() {
       $('[data-js-tutorial-form]').on("ajax:success", function(){
@@ -71,7 +76,14 @@ $(document).on('turbolinks:load', function() {
           type: 'GET',
           url: `/admin/ingredients/last`,
           success: function(last_ingredient) {
+            const successAlert = document.querySelector('.alert-container')
             hiddenInput.value = last_ingredient.id
+            addIngredientHint.innerText = "✔"
+            successAlert.style.display = "flex";
+            setTimeout(
+              function(){successAlert.style.display = "none"},
+              3000
+            );
           }
         });
       });
@@ -98,14 +110,15 @@ $(document).on('turbolinks:load', function() {
   const handleAutocomplete = (element) => {
     const textInput = element.querySelector('.ingredient-name-text-input')
     const hiddenInput = element.querySelector('input.hidden')
+    const addIngredientHint = element.querySelector(".add-ingredient-hint")
 
     textInput.addEventListener('focus', function() {
       const query = textInput.value.toLowerCase();
-      ajaxQueryIngredients(query, textInput, hiddenInput, element)
+      ajaxQueryIngredients(query, textInput, hiddenInput, element, addIngredientHint)
 
       textInput.addEventListener('input', function() {
         const query = textInput.value.toLowerCase();
-        ajaxQueryIngredients(query, textInput, hiddenInput, element)
+        ajaxQueryIngredients(query, textInput, hiddenInput, element, addIngredientHint)
       })
 
       document.addEventListener('keydown', function(event) {
@@ -119,7 +132,7 @@ $(document).on('turbolinks:load', function() {
           } else {
             const input = ingredientForm.querySelector('input')
             input.value = textInput.value
-            submitForm(ingredientForm, hiddenInput)
+            submitForm(ingredientForm, hiddenInput, addIngredientHint)
           }
           ingredientAutocompleteResults.classList.add('invisible')
         }

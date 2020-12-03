@@ -2,9 +2,9 @@ import Rails from "@rails/ujs";
 
 $(document).on('turbolinks:load', function() {
   const ingredientForm = document.getElementById('new_ingredient')
+  const ingredientSubmit = document.getElementById('ingredient-submit')
 
-  if (ingredientForm) {
-    const ingredientSubmit = document.getElementById('ingredient-submit')
+  if (ingredientSubmit) {
     const ingredientName = document.getElementById('ingredient_name')
     const successAlert = document.querySelector('.alert-container')
     const ingredientField = document.querySelector('#ingredient_name')
