@@ -4,11 +4,6 @@ $(document).on('turbolinks:load', function() {
   const ingredientForm = document.getElementById('new_ingredient')
 
   if (ingredientForm) {
-    if (typeof(String.prototype.trim) === "undefined") {
-      String.prototype.trim = function() {
-        return String(this).replace(/^\s+|\s+$/g, '');
-      };
-    }
     const addSeparator = (e) => {
       e.insertAdjacentHTML(
         'beforeend',
@@ -19,9 +14,7 @@ $(document).on('turbolinks:load', function() {
     const addResult = (e, ingredient) => {
       e.insertAdjacentHTML(
         'beforeend',
-        `<div tabindex="0" class="ingredient-autocomplete-result" data-id="${ingredient.id}">
-          ${ingredient.name}
-        </div>`
+        `<div tabindex="0" class="ingredient-autocomplete-result" data-id="${ingredient.id}">${ingredient.name}</div>`
       )
     }
 
@@ -33,7 +26,7 @@ $(document).on('turbolinks:load', function() {
     }
 
     const handleClick = (textInput, element, ingredientAutocompleteResults, hiddenInput) => {
-      textInput.value = element.innerText.trim()
+      textInput.value = element.innerText
       ingredientAutocompleteResults.classList.add('invisible')
       hiddenInput.value = element.dataset.id
     }
@@ -160,11 +153,11 @@ $(document).on('turbolinks:load', function() {
           const ingredientAutocompleteResults = selectedField.parentElement.querySelector('.ingredient-autocomplete-results')
           const firstResult = ingredientAutocompleteResults.querySelector('.ingredient-autocomplete-result')
           if (firstResult) {
-            selectedField.value = firstResult.innerText.trim()
+            selectedField.value = firstResult.innerText
             hiddenInput.value = firstResult.dataset.id
           } else {
             const input = ingredientForm.querySelector('input')
-            input.value = selectedField.value.trim()
+            input.value = selectedField.value
             submitForm(ingredientForm, hiddenInput, addIngredientHint)
           }
           ingredientAutocompleteResults.classList.add('invisible')
