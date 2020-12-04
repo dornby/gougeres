@@ -30,6 +30,14 @@ module Admin
       @ingredient = Ingredient.create!(ingredient_params)
     end
 
+    def show
+      @ingredient = Ingredient.find(params['id'])
+
+      respond_to do |format|
+        format.json { render json: @ingredient }
+      end
+    end
+
     private
 
     def ingredient_params

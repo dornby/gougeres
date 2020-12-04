@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :recipes, only: %i[index edit update new create] do
       resources :recipe_ingredients, only: :index
     end
-    resources :ingredients, only: %i[index create] do
+    resources :ingredients, only: %i[index create show] do
       collection do
         get '/queried_index', to: 'ingredients#queried_index'
         get '/last', to: 'ingredients#last'

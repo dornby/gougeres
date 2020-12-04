@@ -52,21 +52,30 @@ $(document).on('turbolinks:load', function() {
       addClickonAllResults(allResults, textInput, ingredientAutocompleteResults, hiddenInput, ingredients)
     }
 
-    const ajaxQueryIngredients = (query, textInput, hiddenInput, insertedItem, addIngredientHint) => {
+    const hideResultsAtClickOut = (textInput, addIngredientHint, ingredientAutocompleteResults) => {
+      document.addEventListener('click', function(event) {
+        if (!(textInput.contains(event.target))) {
+          addIngredientHint.style.display = "none"
+          ingredientAutocompleteResults.classList.add('invisible')
+        }
+      })
+    }
+
+    const queryIngredients = (textInput, hiddenInput, insertedItem, addIngredientHint) => {
+      const query = textInput.value.toLowerCase();
+
       $.ajax({
         type: 'GET',
         url: `/admin/ingredients/queried_index?q=` + query,
         success: function(ingredients) {
           const ingredientAutocompleteResults = insertedItem.querySelector('.ingredient-autocomplete-results')
+
           ingredientAutocompleteResults.innerHTML = ""
           ingredientAutocompleteResults.classList.remove('invisible')
           addIngredientHint.innerText = "⌘＋⏎"
-          document.addEventListener('click', function(event) {
-            if (!(textInput.contains(event.target))) {
-              addIngredientHint.style.display = "none"
-              ingredientAutocompleteResults.classList.add('invisible')
-            }
-          })
+
+          hideResultsAtClickOut(textInput, addIngredientHint, ingredientAutocompleteResults)
+
           if (ingredients.length > 0) {
             addSelectHint(ingredientAutocompleteResults)
             addIngredientHint.style.display = "none"
@@ -120,19 +129,15 @@ $(document).on('turbolinks:load', function() {
       });
     }
 
-    const handleAutocomplete = (element) => {
-      const textInput = element.querySelector('.ingredient-name-text-input')
-      const hiddenInput = element.querySelector('input.hidden')
-      const addIngredientHint = element.querySelector(".hint.add-ingredient")
+    const setupAutocomplete = (nestedField, textInput, hiddenInput) => {
+      const addIngredientHint = nestedField.querySelector(".hint.add-ingredient")
 
       textInput.addEventListener('focus', function() {
-        const query = textInput.value.toLowerCase();
-        ajaxQueryIngredients(query, textInput, hiddenInput, element, addIngredientHint)
+        queryIngredients(textInput, hiddenInput, nestedField, addIngredientHint)
         textInput.classList.add('selected-field')
 
         textInput.addEventListener('input', function() {
-          const query = textInput.value.toLowerCase();
-          ajaxQueryIngredients(query, textInput, hiddenInput, element, addIngredientHint)
+          queryIngredients(textInput, hiddenInput, nestedField, addIngredientHint)
         })
       })
 
@@ -141,17 +146,48 @@ $(document).on('turbolinks:load', function() {
       })
     }
 
+    // For existing ingredients
+    const nestedFields = document.querySelectorAll('.nested-fields')
+
+    nestedFields.forEach(nestedField => {
+      const textInput = nestedField.querySelector('.ingredient-name-text-input')
+      const hiddenInput = nestedField.querySelector('input.hidden')
+      $.ajax({
+        type: 'GET',
+        url: `/admin/ingredients/${hiddenInput.value}`,
+        success: function(ingredient) {
+          textInput.value = ingredient.name
+        }
+      });
+      setupAutocomplete(nestedField, textInput, hiddenInput)
+    })
+
+    // For newly inserted ingredients
+    jQuery(function() {
+      $('#recipe-ingredients')
+        .on('cocoon:before-insert', function(_e, insertedItem, _originalEvent) {
+          const textInput = insertedItem[0].querySelector('.ingredient-name-text-input')
+          const hiddenInput = insertedItem[0].querySelector('input.hidden')
+          setupAutocomplete(insertedItem[0], textInput, hiddenInput)
+        })
+    })
+
+    // Listening to ⌘＋⏎
     document.addEventListener('keydown', function(event) {
       if (event.metaKey && event.key == "Enter") {
         const selectedField = document.querySelector('.selected-field')
 
         if (selectedField) {
-          const element = selectedField.parentElement.parentElement
-          const hiddenInput = element.querySelector('input.hidden')
-          const addIngredientHint = element.querySelector(".hint.add-ingredient")
           event.preventDefault()
+
+          const ingredientField = selectedField.parentElement.parentElement
+          const hiddenInput = ingredientField.querySelector('input.hidden')
+          const addIngredientHint = ingredientField.querySelector(".hint.add-ingredient")
           const ingredientAutocompleteResults = selectedField.parentElement.querySelector('.ingredient-autocomplete-results')
           const firstResult = ingredientAutocompleteResults.querySelector('.ingredient-autocomplete-result')
+
+          ingredientAutocompleteResults.classList.add('invisible')
+
           if (firstResult) {
             selectedField.value = firstResult.innerText
             hiddenInput.value = firstResult.dataset.id
@@ -160,34 +196,8 @@ $(document).on('turbolinks:load', function() {
             input.value = selectedField.value
             submitForm(ingredientForm, hiddenInput, addIngredientHint)
           }
-          ingredientAutocompleteResults.classList.add('invisible')
         }
       }
-    })
-
-    const textInputs = document.querySelectorAll('.ingredient-name-text-input')
-
-    $.ajax({
-      type: 'GET',
-      url: `/admin/ingredients/queried_index?q=`,
-      success: function(ingredients) {
-        textInputs.forEach(e => {
-          const thisHidden = e.parentElement.parentElement.querySelector('input.hidden')
-          ingredients.filter
-          e.value = ingredients.filter(x => x.id == thisHidden.value)[0].name
-        })
-      }
-    });
-
-    textInputs.forEach(element => {
-      handleAutocomplete(element.parentElement.parentElement.parentElement.parentElement.parentElement)
-    })
-
-    jQuery(function() {
-      $('#recipe-ingredients')
-        .on('cocoon:before-insert', function(_e, insertedItem, _originalEvent) {
-          handleAutocomplete(insertedItem[0])
-        })
     })
   }
 })
