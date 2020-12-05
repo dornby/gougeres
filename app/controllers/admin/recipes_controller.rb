@@ -39,14 +39,6 @@ module Admin
       end
     end
 
-    def from_slug
-      @recipe = Recipe.friendly.find(params[:q])
-
-      respond_to do |format|
-        format.json { render json: @recipe }
-      end
-    end
-
     private
 
     def recipe_params

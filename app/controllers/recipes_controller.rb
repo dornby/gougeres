@@ -10,4 +10,12 @@ class RecipesController < ApplicationController # rubocop:disable Style/Document
   def show
     @recipe = Recipe.friendly.find(params[:id])
   end
+
+  def from_slug
+    @recipe = Recipe.friendly.find(params[:q])
+
+    respond_to do |format|
+      format.json { render json: @recipe }
+    end
+  end
 end

@@ -10,4 +10,12 @@ class WinesController < ApplicationController # rubocop:disable Style/Documentat
   def show
     @wine = Wine.friendly.find(params[:id])
   end
+
+  def from_slug
+    @wine = Wine.friendly.find(params[:q])
+
+    respond_to do |format|
+      format.json { render json: @wine }
+    end
+  end
 end

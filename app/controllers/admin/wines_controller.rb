@@ -44,14 +44,6 @@ module Admin
       end
     end
 
-    def from_slug
-      @wine = Wine.friendly.find(params[:q])
-
-      respond_to do |format|
-        format.json { render json: @wine }
-      end
-    end
-
     private
 
     def wine_params

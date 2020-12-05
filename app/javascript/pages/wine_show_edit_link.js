@@ -13,7 +13,7 @@ $(document).on('turbolinks:load', function() {
 
     $.ajax({
       type: 'GET',
-      url: `/admin/wines/from_slug?q=`+ friendlyId,
+      url: `/wines/from_slug?q=`+ friendlyId,
       async: false,
       success: function(wine) {
         editLink.href = (`/admin/wines/${wine.id}/edit`)
