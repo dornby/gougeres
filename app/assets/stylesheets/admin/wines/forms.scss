@@ -92,6 +92,7 @@ input.string#wine_name {
     padding: 0.2rem 0.5rem;
     margin-right: 0.6rem;
     margin-bottom: 1rem;
+    cursor: pointer;
 
     &.clicked {
       color: #d7d7d7;
