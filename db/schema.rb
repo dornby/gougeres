@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_29_083327) do
+ActiveRecord::Schema.define(version: 2020_12_04_163950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,17 +108,18 @@ ActiveRecord::Schema.define(version: 2020_11_29_083327) do
 
   create_table "wine_taggings", force: :cascade do |t|
     t.bigint "wine_id"
-    t.bigint "tag_id"
+    t.bigint "wine_tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["tag_id"], name: "index_wine_taggings_on_tag_id"
     t.index ["wine_id"], name: "index_wine_taggings_on_wine_id"
+    t.index ["wine_tag_id"], name: "index_wine_taggings_on_wine_tag_id"
   end
 
   create_table "wine_tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "colors", default: [], array: true
   end
 
   create_table "wines", force: :cascade do |t|

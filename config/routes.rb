@@ -16,8 +16,14 @@ Rails.application.routes.draw do
     end
     resources :wines, only: %i[index edit update new create] do
       resources :wine_reviews, only: %i[index]
+      resources :wine_taggings, only: %i[index]
     end
     resources :reviewers, only: :show
+    resources :wine_tags, only: [:show, :index] do
+      collection do
+        get '/queried_index', to: 'wine_tags#queried_index'
+      end
+    end
   end
 
   resources :recipes, only: %i[index show]

@@ -8,14 +8,15 @@ class Wine < ApplicationRecord # rubocop:disable Style/Documentation
   validates :color, presence: true
 
   has_many :wine_taggings
-  has_many :tags, through: :wine_taggings
+  has_many :wine_tags, through: :wine_taggings
 
   has_many :wine_reviews
   has_many :reviewers, through: :wine_reviews
 
   accepts_nested_attributes_for :wine_reviews, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :wine_taggings, reject_if: :all_blank, allow_destroy: true
 
   has_one_attached :picture
 
-  COLORS = %w[Rouge Blanc Rosé].freeze
+  COLORS = %w[red white rose].freeze
 end

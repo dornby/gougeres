@@ -6,22 +6,23 @@
 
 - if @wine.picture.attachment
   -url = cl_image_path @wine.picture.key
-  - if @wine.color == "Rouge"
+  - if @wine.color == "red"
     .cover-picture.wine-picture.red-border{style: "background-image:url(#{url})"}
-  - elsif @wine.color == "Blanc"
+  - elsif @wine.color == "white"
     .cover-picture.wine-picture.white-border{style: "background-image:url(#{url})"}
-  - elsif @wine.color == "Rosé"
+  - elsif @wine.color == "rose"
     .cover-picture.wine-picture.rose-border{style: "background-image:url(#{url})"}
       = cl_image_tag @wine.picture.key, id: "wine-picture"
 
 %h3= @wine.name
-.wine-show-reviews
-  .wine-show-review#average-review{style: "background-image:url(#{asset_path("review_average")})"}
-    = @wine.average_review
-  - @wine.wine_reviews.each do |wine_review|
-    - asset_path = asset_path("review_#{wine_review.reviewer.name.downcase}")
-    .wine-show-review{style: "background-image:url(#{asset_path})"}
-      = wine_review.review
+- if @wine.average_review
+  .wine-show-reviews
+    .wine-show-review#average-review{style: "background-image:url(#{asset_path("review_average")})"}
+      = @wine.average_review
+    - @wine.wine_reviews.each do |wine_review|
+      - asset_path = asset_path("review_#{wine_review.reviewer.name.downcase}")
+      .wine-show-review{style: "background-image:url(#{asset_path})"}
+        = wine_review.review
 - if !@wine.domain.blank?
   %p= "Domaine : #{@wine.domain}"
 - if !@wine.variety.blank?

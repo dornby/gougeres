@@ -19,9 +19,9 @@ $(document).on('turbolinks:load', function() {
         url: `/admin/wines/`+ wineId + `/wine_reviews`,
         async: false,
         success: function(wineReviews) {
-        wineReviews.forEach(element => {
-          myWineReviews.push(element)
-        })
+          wineReviews.forEach(element => {
+            myWineReviews.push(element)
+          })
         }
       });
     }
