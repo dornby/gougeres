@@ -9,8 +9,15 @@ $(document).on('turbolinks:load', function() {
     const editLink = editButton.getElementsByTagName("a")[0]
 
     const pathElements = path.split("/")
-    const id = pathElements[pathElements.length - 1]
+    const friendlyId = pathElements[pathElements.length - 1]
 
-    editLink.href = (`/admin/recipes/${id}/edit`)
+    $.ajax({
+      type: 'GET',
+      url: `/admin/recipes/from_slug?q=`+ friendlyId,
+      async: false,
+      success: function(recipe) {
+        editLink.href = (`/admin/recipes/${recipe.id}/edit`)
+      }
+    });
   }
 })

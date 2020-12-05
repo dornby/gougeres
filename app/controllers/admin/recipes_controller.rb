@@ -22,7 +22,7 @@ module Admin
       @recipe = Recipe.new(recipe_params)
       @ingredient = Ingredient.new
       if @recipe.save
-        redirect_to recipe_path(@recipe)
+        redirect_to recipe_path(@recipe.friendly_id)
       else
         render :new
       end
@@ -33,9 +33,17 @@ module Admin
       @recipe.update_attributes(recipe_params)
       @ingredient = Ingredient.new
       if @recipe.save
-        redirect_to recipe_path(@recipe)
+        redirect_to recipe_path(@recipe.friendly_id)
       else
         render :edit
+      end
+    end
+
+    def from_slug
+      @recipe = Recipe.friendly.find(params[:q])
+
+      respond_to do |format|
+        format.json { render json: @recipe }
       end
     end
 

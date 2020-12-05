@@ -14,4 +14,9 @@ class Recipe < ApplicationRecord # rubocop:disable Style/Documentation
 
   has_rich_text :content
   has_one_attached :picture
+
+  # friendly_id not by default
+  def to_param
+    id.to_s
+  end
 end

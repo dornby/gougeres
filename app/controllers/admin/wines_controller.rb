@@ -27,7 +27,7 @@ module Admin
       @wine = Wine.new(wine_params)
       if @wine.save
         compute_average_review
-        redirect_to wine_path(@wine)
+        redirect_to wine_path(@wine.friendly_id)
       else
         render :new
       end
@@ -38,9 +38,17 @@ module Admin
       @wine.update_attributes(wine_params)
       if @wine.save
         compute_average_review
-        redirect_to wine_path(@wine)
+        redirect_to wine_path(@wine.friendly_id)
       else
         render :edit
+      end
+    end
+
+    def from_slug
+      @wine = Wine.friendly.find(params[:q])
+
+      respond_to do |format|
+        format.json { render json: @wine }
       end
     end
 

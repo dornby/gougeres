@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     root 'pages#root'
     resources :recipes, only: %i[index edit update new create] do
       resources :recipe_ingredients, only: :index
+      collection do
+        get '/from_slug', to: 'recipes#from_slug'
+      end
     end
     resources :ingredients, only: %i[index create show] do
       collection do
@@ -17,6 +20,9 @@ Rails.application.routes.draw do
     resources :wines, only: %i[index edit update new create] do
       resources :wine_reviews, only: %i[index]
       resources :wine_taggings, only: %i[index]
+      collection do
+        get '/from_slug', to: 'wines#from_slug'
+      end
     end
     resources :reviewers, only: :show
     resources :wine_tags, only: [:show, :index] do

@@ -19,4 +19,9 @@ class Wine < ApplicationRecord # rubocop:disable Style/Documentation
   has_one_attached :picture
 
   COLORS = %w[red white rose].freeze
+
+  # friendly_id not by default
+  def to_param
+    id.to_s
+  end
 end
