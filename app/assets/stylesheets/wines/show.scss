@@ -22,26 +22,94 @@
   }
 }
 
-.wine-show-reviews {
+.wine-show-name-container {
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  .wine-taggings {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+
+    .wine-tagging {
+      margin-right: 0.8rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 1rem;
+
+      &.red-color {
+        background: #5a0611;
+        color: #f7f7f7
+      }
+
+      &.white-color {
+        background: #e0dca1;
+        color: black;
+      }
+
+      &.rose-color {
+        background: #e5a59a;
+        color: black;
+      }
+    }
+  }
 }
 
-.wine-show-review {
-  height: 60px;
-  width: 60px;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+.wine-show-details {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  margin-right: 0.6rem;
+  flex-direction: column;
+  margin-bottom: 3rem;
+}
 
-  &#average-review {
-    height: 90px;
-    width: 90px;
+.wine-show-reviews {
+  display: flex;
+  height: 5rem;
+  color: #f7f7f7;
+  margin-bottom: 1rem;
+
+  .wine-show-review {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+
+    .wine-show-review-title {
+      margin-top: 10%;
+      font-size: 90%;
+    }
+
+    .wine-show-review-value {
+      margin-bottom: 15%;
+      font-size: 200%;
+    }
+  }
+
+  .wine-show-average-review {
+    width: 5rem;
+    background: #b77907;
+    border-radius: 15%;
+    margin-right: 0.3rem;
+  }
+
+  .wine-show-personal-reviews {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .wine-show-personal-review {
+      height: 2.4rem;
+      width: 2.4rem;
+      border-radius: 15%;
+      font-size: 0.5rem;
+
+      &.hugo-wine-review {
+        background: #15b99e
+      }
+
+      &.alice-wine-review {
+        background: #e03569
+      }
+    }
   }
 }
 
@@ -62,6 +130,16 @@
 
     &.rose-border {
       border: 6px solid #e5a59a;
+    }
+  }
+
+  .wine-show-name-container {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1rem;
+
+    .wine-taggings {
+      margin-left: 2rem;
     }
   }
 }
