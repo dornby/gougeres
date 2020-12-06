@@ -14,6 +14,17 @@
     .wine-tags-hidden-inputs
       = f.simple_fields_for :wine_taggings do |wine_tagging|
         = wine_tagging.association :wine_tag, as: :hidden
+    %h4 Démarches
+    = f.hidden_field :is_natural, value: "false"
+    = f.hidden_field :is_organic, value: "false"
+    = f.hidden_field :is_biodynamic, value: "false"
+    .process-labels
+      .process-label.wine-tag-pill#organic-label{ data: { selected: @wine.is_organic.to_s } }
+        Biologique
+      .process-label.wine-tag-pill#biodynamic-label{ data: { selected: @wine.is_biodynamic.to_s } }
+        En biodynamie
+      .process-label.wine-tag-pill#natural-label{ data: { selected: @wine.is_natural.to_s } }
+        Nature
     %h4 Domaine
     = f.input :domain, label: false, placeholder: "Domaine de la Romanée-Conti"
     %h4 Cépage

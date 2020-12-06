@@ -85,18 +85,22 @@ input.string#wine_name {
 .wine-tags-visible-inputs {
   display: flex;
   flex-wrap: wrap;
+}
 
-  .wine-tag-pill {
-    border: 1px solid black;
-    border-radius: 0.8rem;
-    padding: 0.2rem 0.5rem;
-    margin-right: 0.6rem;
-    margin-bottom: 1rem;
-    cursor: pointer;
+.wine-tag-pill {
+  border: 1px solid black;
+  border-radius: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  margin-right: 0.6rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
 
-    &.clicked {
-      color: #d7d7d7;
-      background: black;
-    }
+  &.clicked {
+    color: #d7d7d7;
+    background: black;
   }
+}
+
+.process-labels {
+  display: flex;
 }

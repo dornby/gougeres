@@ -13,19 +13,27 @@
   %h3= @wine.name
   .wine-taggings
     - @wine.wine_taggings.each do |wine_tagging|
-      .wine-tagging{class: "#{@wine.color}-color"}= wine_tagging.wine_tag.name
+      .wine-tag-pill{class: "#{@wine.color}-color"}= wine_tagging.wine_tag.name
 
 .wine-show-details
-  - if @wine.average_review
-    .wine-show-reviews
-      .wine-show-review.wine-show-average-review
-        .wine-show-review-title= "Note"
-        .wine-show-review-value= @wine.average_review
-      .wine-show-personal-reviews
-        - @wine.wine_reviews.each do |wine_review|
-          .wine-show-review.wine-show-personal-review{class: "#{wine_review.reviewer.name.downcase}-wine-review"}
-            .wine-show-review-title= wine_review.reviewer.name
-            .wine-show-review-value= wine_review.review
+  .wine-show-details-top
+    - if @wine.average_review
+      .wine-show-reviews
+        .wine-show-review.wine-show-average-review
+          .wine-show-review-title= "Note"
+          .wine-show-review-value= @wine.average_review
+        .wine-show-personal-reviews
+          - @wine.wine_reviews.each do |wine_review|
+            .wine-show-review.wine-show-personal-review{class: "#{wine_review.reviewer.name.downcase}-wine-review"}
+              .wine-show-review-title= wine_review.reviewer.name
+              .wine-show-review-value= wine_review.review
+    .wine-show-processes
+      - if @wine.is_organic
+        .wine-tag-pill.show-pill.selected{id: "organic-label"}= "Biologique"
+      - if @wine.is_biodynamic
+        .wine-tag-pill.show-pill.selected{id: "biodynamic-label"}= "En biodynamie"
+      - if @wine.is_natural
+        .wine-tag-pill.show-pill.selected{id: "natural-label"}= "Nature"
 
   - if !@wine.domain.blank?
     %h4= "Domaine"

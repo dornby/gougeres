@@ -54,6 +54,9 @@ module Admin
         :variety,
         :color,
         :picture,
+        :is_organic,
+        :is_biodynamic,
+        :is_natural,
         wine_reviews_attributes: %i[id review reviewer_id _destroy],
         wine_taggings_attributes: %i[id wine_tag_id _destroy]
       )
