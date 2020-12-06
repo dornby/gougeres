@@ -47,9 +47,9 @@
 
 .wine-show-reviews {
   display: flex;
-  height: 5rem;
+  height: 6rem;
   color: #f7f7f7;
-  margin-right: 2rem;
+  margin-right: 1rem;
 
   .wine-show-review {
     display: flex;
@@ -69,7 +69,7 @@
   }
 
   .wine-show-average-review {
-    width: 5rem;
+    width: 6rem;
     background: #b77907;
     border-radius: 15%;
     margin-right: 0.3rem;
@@ -81,8 +81,8 @@
     justify-content: space-between;
 
     .wine-show-personal-review {
-      height: 2.3rem;
-      width: 2.3rem;
+      height: 2.8rem;
+      width: 2.8rem;
       border-radius: 15%;
       font-size: 0.5rem;
 
@@ -102,9 +102,78 @@
 }
 
 .wine-show-processes {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  border: 1px solid black;
+  border-radius: 1rem;
+  flex-grow: 1;
+
+  .wine-show-processes-title {
+    display: flex;
+    justify-content: center;
+    font-family: "Alberto Regular";
+    margin-top: 0.2rem;
+  }
+
+  .wine-show-processes-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.2rem;
+    flex-grow: 1;
+    height: 4rem;
+
+    .wine-show-process {
+      width: 2.4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .icon-container {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &#organic-icon {
+          background: #70af8d;
+        }
+
+        &#biodynamic-icon {
+          background: #a270a2;
+        }
+
+        &#natural-icon {
+          background: #5eb2e6;
+        }
+
+        i {
+          color: #f7f7f7
+        }
+      }
+
+      p {
+        margin-top: 0.2rem;
+        margin-bottom: 0;
+        font-size: 0.5rem;
+
+        &#organic-text {
+          color: #70af8d;
+          font-weight: bold;
+        }
+
+        &#biodynamic-text {
+          color: #a270a2;
+          font-weight: bold;
+        }
+
+        &#natural-text {
+          color: #5eb2e6;
+          font-weight: bold;
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (min-width : 1200px) {
@@ -135,5 +204,10 @@
     .wine-taggings {
       margin-left: 2rem;
     }
+  }
+
+  .wine-show-processes {
+    flex-grow: 0;
+    width: 15rem;
   }
 }

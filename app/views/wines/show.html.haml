@@ -27,13 +27,25 @@
             .wine-show-review.wine-show-personal-review{class: "#{wine_review.reviewer.name.downcase}-wine-review"}
               .wine-show-review-title= wine_review.reviewer.name
               .wine-show-review-value= wine_review.review
-    .wine-show-processes
-      - if @wine.is_organic
-        .wine-tag-pill.show-pill.selected{id: "organic-label"}= "Biologique"
-      - if @wine.is_biodynamic
-        .wine-tag-pill.show-pill.selected{id: "biodynamic-label"}= "En biodynamie"
-      - if @wine.is_natural
-        .wine-tag-pill.show-pill.selected{id: "natural-label"}= "Nature"
+    - if @wine.is_organic || @wine.is_biodynamic || @wine.is_natural
+      .wine-show-processes
+        .wine-show-processes-title= "Labels"
+        .wine-show-processes-content
+          - if @wine.is_organic
+            .wine-show-process{id: "organic-label"}
+              .icon-container{id: "organic-icon"}
+                %i.fas.fa-leaf
+              %p{id: "organic-text"}= "Bio"
+          - if @wine.is_biodynamic
+            .wine-show-process{id: "biodynamic-label"}
+              .icon-container{id: "biodynamic-icon"}
+                %i.fas.fa-moon
+              %p{id: "biodynamic-text"}= "Biodynamie"
+          - if @wine.is_natural
+            .wine-show-process{id: "natural-label"}
+              .icon-container{id: "natural-icon"}
+                %i.fas.fa-tint
+              %p{id: "natural-text"}= "Nature"
 
   - if !@wine.domain.blank?
     %h4= "Domaine"

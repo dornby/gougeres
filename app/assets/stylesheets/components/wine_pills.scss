@@ -13,41 +13,35 @@
     background: black;
   }
 
-  &.show-pill {
-    font-size: 0.7rem;
-    margin-bottom: 0.1rem;
-    cursor: default;
-  }
-
-  &#natural-label {
-    border: 1px solid #0086d8;
-    color: #0086d8;
-
-    &.selected {
-      background: #0086d8;
-      color: white;
-    }
-  }
-
   &#organic-label {
-    border: 1px solid #009846;
-    color: #009846;
+    border: 1px solid #70af8d;
+    color: #70af8d;
 
     &.selected {
-      background: #009846;
+      background: #70af8d;
       color: white;
     }
   }
 
   &#biodynamic-label {
-    border: 1px solid purple;
-    color: purple;
+    border: 1px solid #a270a2;
+    color: #a270a2;
 
     &.selected {
-      background: purple;
+      background: #a270a2;
       color: white;
     }
   }
+
+    &#natural-label {
+      border: 1px solid #5eb2e6;
+      color: #5eb2e6;
+
+      &.selected {
+        background: #5eb2e6;
+        color: white;
+      }
+    }
 
   &.red-color {
     border: none;
