@@ -81,17 +81,21 @@
     justify-content: space-between;
 
     .wine-show-personal-review {
-      height: 2.4rem;
-      width: 2.4rem;
+      height: 2.3rem;
+      width: 2.3rem;
       border-radius: 15%;
       font-size: 0.5rem;
 
       &.hugo-wine-review {
-        background: #15b99e
+        border: 1px solid #15b99e;
+        color: #15b99e;
+        font-weight: bold;
       }
 
       &.alice-wine-review {
-        background: #e03569
+        border: 1px solid #e03569;
+        color: #e03569;
+        font-weight: bold;
       }
     }
   }
