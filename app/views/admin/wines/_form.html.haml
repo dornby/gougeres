@@ -1,7 +1,7 @@
 = simple_form_for [:admin, @wine] do |f|
-  %h3 Nom
+  %h4 Nom
   = f.input :name, label: false, placeholder: "Romanée-Conti Millésime 1945"
-  %h3 Détails
+  %h3 Infos
   .details-section
     %h4 Robe
     = f.hidden_field :color, value: "red"
@@ -9,12 +9,7 @@
       .color-label.selected#red-label
       .color-label#white-label
       .color-label#rose-label
-    %h4 Tags
-    .wine-tags-visible-inputs
-    .wine-tags-hidden-inputs
-      = f.simple_fields_for :wine_taggings do |wine_tagging|
-        = wine_tagging.association :wine_tag, as: :hidden
-    %h4 Démarches
+    %h4 Labels
     = f.hidden_field :is_natural, value: "false"
     = f.hidden_field :is_organic, value: "false"
     = f.hidden_field :is_biodynamic, value: "false"
@@ -25,10 +20,6 @@
         En biodynamie
       .process-label.wine-tag-pill#natural-label{ data: { selected: @wine.is_natural.to_s } }
         Nature
-    %h4 Domaine
-    = f.input :domain, label: false, placeholder: "Domaine de la Romanée-Conti"
-    %h4 Cépage
-    = f.input :variety, label: false, placeholder: "Pinot Noir"
   %h3 Notes
   .wine-reviews-container
     = f.simple_fields_for :wine_reviews do |wine_review|
@@ -40,6 +31,16 @@
           .wine-review-value
             0
         = wine_review.association :reviewer, as: :hidden
+  %h3 Tags
+  .wine-tags-visible-inputs
+  .wine-tags-hidden-inputs
+    = f.simple_fields_for :wine_taggings do |wine_tagging|
+      = wine_tagging.association :wine_tag, as: :hidden
+  %h3 Détails
+  %h4 Domaine
+  = f.input :domain, label: false, placeholder: "Domaine de la Romanée-Conti"
+  %h4 Cépage
+  = f.input :variety, label: false, placeholder: "Pinot Noir"
   %h3 Photo
   - if form == "edit" && @wine.picture.attachment
     = f.input :picture, label: false, input_html: { style: "display:none" }
