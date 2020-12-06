@@ -21,6 +21,10 @@ module Admin
       @wine = Wine.friendly.find(params[:id])
       build_wine_reviews
       build_wine_taggings
+
+      p "COUCOUCOUCOUCOUCOUCOUCOCU"
+      p request.remote_ip
+      p "COUCOUCOUCOUCOUCOUCOUCOCU"
     end
 
     def create
