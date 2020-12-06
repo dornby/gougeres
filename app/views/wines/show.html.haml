@@ -21,7 +21,8 @@
       .wine-show-reviews
         .wine-show-review.wine-show-average-review
           .wine-show-review-title= "Note"
-          .wine-show-review-value= @wine.average_review
+          - average_review = @wine.average_review
+          .wine-show-review-value= average_review % 1 == 0 ? average_review.round : average_review
         .wine-show-personal-reviews
           - @wine.wine_reviews.each do |wine_review|
             .wine-show-review.wine-show-personal-review{class: "#{wine_review.reviewer.name.downcase}-wine-review"}
