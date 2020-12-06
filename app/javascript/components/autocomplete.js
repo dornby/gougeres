@@ -98,33 +98,18 @@ $(document).on('turbolinks:load', function() {
             type: 'GET',
             url: `/admin/ingredients/last`,
             success: function(last_ingredient) {
-              const successAlert = document.querySelector('.alert-container')
-              hiddenInput.value = last_ingredient.id
-              addIngredientHint.innerText = "✔"
-              successAlert.style.display = "flex";
-              setTimeout(
-                function(){successAlert.style.display = "none"},
-                3000
-              );
+              if (hiddenInput.parentElement.parentElement.querySelector('input.ingredient-name-text-input').classList.contains('selected-field')) {
+                const successAlert = document.querySelector('.alert-container')
+                hiddenInput.value = last_ingredient.id
+                addIngredientHint.innerText = "✔"
+                successAlert.style.display = "flex";
+                setTimeout(
+                  function(){successAlert.style.display = "none"},
+                  3000
+                );
+              }
             }
           });
-        });
-
-        $('[data-js-tutorial-form]').on("ajax:error", function(event) {
-          const detail = event.detail;
-          const errorFull = detail[2].responseText;
-
-          const errorRegExp = /Validation failed: /
-          const breakRegExp = /Extracted source/
-          const errorObject = errorRegExp.exec(errorFull)
-          const breakObject = breakRegExp.exec(errorFull)
-          const errorMessage = errorFull.substring(
-            errorObject.index + 19, breakObject.index - 1
-          )
-
-          const errorMessageElement = document.querySelector(".error-message")
-
-          errorMessageElement.innerText = errorMessage
         });
       });
     }
