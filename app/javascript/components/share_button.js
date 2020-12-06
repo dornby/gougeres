@@ -3,7 +3,7 @@ require("jquery")
 $(document).on('turbolinks:load', function() {
   if (window.innerHeight > window.innerWidth && navigator.share) {
     const recipeShowPathRegExp = RegExp('recipes/((?=[^new])[A-Za-z0-9\-\_]+)$')
-    const wineShowPathRegExp = RegExp('recipes/((?=[^new])[A-Za-z0-9\-\_]+)$')
+    const wineShowPathRegExp = RegExp('wines/((?=[^new])[A-Za-z0-9\-\_]+)$')
     const path = window.location.pathname
 
     if (recipeShowPathRegExp.test(path) || wineShowPathRegExp.test(path)) {
