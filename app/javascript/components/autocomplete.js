@@ -21,7 +21,7 @@ $(document).on('turbolinks:load', function() {
     const addSelectHint = (ingredientAutocompleteResults) => {
       ingredientAutocompleteResults.insertAdjacentHTML(
         'afterbegin',
-        `<div class="hint select-ingredient">⌘＋⏎</div>`
+        `<div class="hint select-ingredient">⌘⏎</div>`
       )
     }
 
@@ -68,23 +68,23 @@ $(document).on('turbolinks:load', function() {
         type: 'GET',
         url: `/admin/ingredients/queried_index?q=` + query,
         success: function(ingredients) {
+          console.log("query")
           const ingredientAutocompleteResults = insertedItem.querySelector('.ingredient-autocomplete-results')
 
           ingredientAutocompleteResults.innerHTML = ""
           ingredientAutocompleteResults.classList.remove('invisible')
-          addIngredientHint.innerText = "⌘＋⏎"
+          addIngredientHint.innerText = "⌘⬆⏎"
+          addIngredientHint.style.display = "flex"
 
           hideResultsAtClickOut(textInput, addIngredientHint, ingredientAutocompleteResults)
 
           if (ingredients.length > 0) {
             addSelectHint(ingredientAutocompleteResults)
-            addIngredientHint.style.display = "none"
             ingredients.forEach((ingredient, index) => {
               handleForEachIngredient(index, ingredientAutocompleteResults, ingredient, textInput, hiddenInput, ingredients)
             })
           } else {
             ingredientAutocompleteResults.classList.add('invisible')
-            addIngredientHint.style.display = "flex"
           }
         }
       });
@@ -131,6 +131,17 @@ $(document).on('turbolinks:load', function() {
       })
     }
 
+    const chooseResult = (result, selectedField, hiddenInput) => {
+      selectedField.value = result.innerText
+      hiddenInput.value = result.dataset.id
+    }
+
+    const createIngredient = (ingredientForm, selectedField, hiddenInput, addIngredientHint) => {
+      const input = ingredientForm.querySelector('input')
+      input.value = selectedField.value
+      submitForm(ingredientForm, hiddenInput, addIngredientHint)
+    }
+
     // For existing ingredients
     const nestedFields = document.querySelectorAll('.nested-fields')
 
@@ -159,7 +170,7 @@ $(document).on('turbolinks:load', function() {
 
     // Listening to ⌘＋⏎
     document.addEventListener('keydown', function(event) {
-      if (event.metaKey && event.key == "Enter") {
+      if (event.metaKey && event.key == "Enter" && !event.shiftKey) {
         const selectedField = document.querySelector('.selected-field')
 
         if (selectedField) {
@@ -174,12 +185,34 @@ $(document).on('turbolinks:load', function() {
           ingredientAutocompleteResults.classList.add('invisible')
 
           if (firstResult) {
-            selectedField.value = firstResult.innerText
-            hiddenInput.value = firstResult.dataset.id
+            chooseResult(firstResult, selectedField, hiddenInput)
           } else {
-            const input = ingredientForm.querySelector('input')
-            input.value = selectedField.value
-            submitForm(ingredientForm, hiddenInput, addIngredientHint)
+            createIngredient(ingredientForm, selectedField, hiddenInput, addIngredientHint)
+          }
+        }
+      }
+    })
+
+    // Listening to ⌘＋⬆+⏎
+    document.addEventListener('keydown', function(event) {
+      if (event.metaKey && event.shiftKey && event.key == "Enter") {
+        const selectedField = document.querySelector('.selected-field')
+
+        if (selectedField) {
+          event.preventDefault()
+
+          const ingredientField = selectedField.parentElement.parentElement
+          const hiddenInput = ingredientField.querySelector('input.hidden')
+          const addIngredientHint = ingredientField.querySelector(".hint.add-ingredient")
+          const ingredientAutocompleteResults = selectedField.parentElement.querySelector('.ingredient-autocomplete-results')
+          const matchingResults = Array.from(ingredientAutocompleteResults.querySelectorAll('.ingredient-autocomplete-result')).filter(e => e.innerText == selectedField.value)
+
+          ingredientAutocompleteResults.classList.add('invisible')
+
+          if (matchingResults.length > 0) {
+            chooseResult(matchingResults[0], selectedField, hiddenInput)
+          } else {
+            createIngredient(ingredientForm, selectedField, hiddenInput, addIngredientHint)
           }
         }
       }

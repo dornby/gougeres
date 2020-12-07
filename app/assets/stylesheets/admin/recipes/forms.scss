@@ -19,7 +19,7 @@ input.string#recipe_name {
   }
 
   .hint {
-    width: 3rem;
+    width: 2rem;
     height: calc(100% - 0.8rem);
     color: white;
     position: absolute;
@@ -34,6 +34,7 @@ input.string#recipe_name {
       display: none;
       right: 0;
       top: 0;
+      font-size: 0.5rem;
     }
 
     &.select-ingredient {
