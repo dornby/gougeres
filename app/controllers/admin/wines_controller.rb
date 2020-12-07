@@ -6,8 +6,8 @@ module Admin
     before_action :destroy_discardable_wine_taggings, only: %i[create update]
 
     def index
-      @wines = Wine.all.group_by do |wine|
-        wine.name[0]
+      @wines = Wine.all.order('lower(name)').group_by do |wine|
+        wine.name[0].downcase
       end
     end
 

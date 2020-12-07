@@ -2,8 +2,8 @@
 
 class WinesController < ApplicationController # rubocop:disable Style/Documentation
   def index
-    @wines = Wine.all.group_by do |wine|
-      wine.name[0]
+    @wines = Wine.all.order('lower(name)').group_by do |wine|
+      wine.name[0].downcase
     end
   end
 

@@ -2,8 +2,8 @@
 
 class RecipesController < ApplicationController # rubocop:disable Style/Documentation
   def index
-    @recipes = Recipe.all.group_by do |recipe|
-      recipe.name[0]
+    @recipes = Recipe.all.order('lower(name)').group_by do |recipe|
+    recipe.name[0].downcase
     end
   end
 
