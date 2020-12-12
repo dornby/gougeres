@@ -47,19 +47,12 @@ module Admin
     private
 
     def wine_params
-      params.require(:wine).permit(
-        :coucou,
-        :name,
-        :domain,
-        :variety,
-        :color,
-        :picture,
-        :is_organic,
-        :is_biodynamic,
-        :is_natural,
-        wine_reviews_attributes: %i[id review reviewer_id _destroy],
-        wine_taggings_attributes: %i[id wine_tag_id _destroy]
-      )
+      params
+        .require(:wine)
+        .permit(:coucou, :name, :domain, :region, :variety,
+                :color, :picture, :is_organic, :is_biodynamic, :is_natural,
+                wine_reviews_attributes: %i[id review reviewer_id _destroy],
+                wine_taggings_attributes: %i[id wine_tag_id _destroy])
     end
 
     def build_wine_reviews

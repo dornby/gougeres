@@ -48,6 +48,9 @@
                 %i.fas.fa-tint
               %p{id: "natural-text"}= "Nature"
 
+  - if !@wine.region.blank?
+    %h4= "Région"
+    = @wine.region
   - if !@wine.domain.blank?
     %h4= "Viticulteur"
     = @wine.domain

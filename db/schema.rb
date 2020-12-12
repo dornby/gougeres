@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_06_125542) do
+ActiveRecord::Schema.define(version: 2020_12_12_102425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_125542) do
     t.boolean "is_natural", default: false
     t.boolean "is_organic", default: false
     t.boolean "is_biodynamic", default: false
+    t.string "region"
     t.index ["slug"], name: "index_wines_on_slug", unique: true
   end
 
