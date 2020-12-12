@@ -51,9 +51,9 @@
   - if !@wine.region.blank?
     %h4= "Région"
     = @wine.region
-  - if !@wine.domain.blank?
-    %h4= "Viticulteur"
-    = @wine.domain
   - if !@wine.variety.blank?
     %h4= "Cépage"
     = @wine.variety
+  - if !@wine.producer.blank?
+    %h4= "Producteur"
+    = @wine.producer

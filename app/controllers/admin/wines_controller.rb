@@ -49,7 +49,7 @@ module Admin
     def wine_params
       params
         .require(:wine)
-        .permit(:coucou, :name, :domain, :region, :variety,
+        .permit(:coucou, :name, :producer, :region, :variety,
                 :color, :picture, :is_organic, :is_biodynamic, :is_natural,
                 wine_reviews_attributes: %i[id review reviewer_id _destroy],
                 wine_taggings_attributes: %i[id wine_tag_id _destroy])

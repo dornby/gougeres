@@ -38,11 +38,11 @@
         = wine_review.association :reviewer, as: :hidden
   %h3 Détails
   %h4 Région
-  = f.input :region, label: false, placeholder: "Bordeaux"
-  %h4 Domaine
-  = f.input :domain, label: false, placeholder: "Domaine de la Romanée-Conti"
+  = f.input :region, label: false, placeholder: "Bourgogne"
   %h4 Cépage
-  = f.input :variety, label: false, placeholder: "Pinot Noir"
+  = f.input :variety, label: false, placeholder: "100% Chardonnay"
+  %h4 Producteur
+  = f.input :producer, label: false, placeholder: "Domaine du Bon Vin"
   %h3 Photo
   - if form == "edit" && @wine.picture.attachment
     = f.input :picture, label: false, input_html: { style: "display:none" }
