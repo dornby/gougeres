@@ -43,14 +43,14 @@ $(document).on('turbolinks:load', function() {
       rangeValues[index].innerText = sliders[index].value
 
       if (sliders[index].value == -1) {
-        rangeValues[index].innerText = "Pas de review"
+        rangeValues[index].innerText = "Pas de note"
       }
 
       sliders[index].addEventListener('input', function() {
         if (this.value != -1) {
           rangeValues[index].innerText = this.value
         } else {
-          rangeValues[index].innerText = "Pas de review"
+          rangeValues[index].innerText = "Pas de note"
         }
       })
 
