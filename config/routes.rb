@@ -28,11 +28,13 @@ Rails.application.routes.draw do
 
   resources :recipes, only: %i[index show] do
     collection do
+      get '/queried_index', to: 'recipes#queried_index'
       get '/from_slug', to: 'recipes#from_slug'
     end
   end
   resources :wines, only: %i[index show] do
     collection do
+      get '/queried_index', to: 'wines#queried_index'
       get '/from_slug', to: 'wines#from_slug'
     end
   end

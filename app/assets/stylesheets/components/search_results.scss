@@ -1,4 +1,8 @@
-.recipe {
+.index-items {
+  margin-left: 1rem;
+}
+
+.index-item {
   border-left: 5px solid black;
   padding: 0 16px;
   margin-bottom: 64px;
@@ -6,7 +10,7 @@
 }
 
 @media only screen and (min-width : 1200px) {
-  .recipe {
+  .index-item {
     margin-bottom: 1rem;
   }
 }

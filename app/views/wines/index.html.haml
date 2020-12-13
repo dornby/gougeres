@@ -1,9 +1,10 @@
 %h2 Vins
 
-.recipes
-  %ul
-    - @wines.sort.to_h.each do |letter, wines|
-      %h2= letter
-      - wines.each do |wine|
-        .recipe
-          %h4= link_to wine.name, wine_path(wine.friendly_id)
+%input.string.search-bar{placeholder: "Saisir un nom, un cépage, une région ou un producteur"}
+
+.index-items
+  - @wines.sort.to_h.each do |letter, wines|
+    %h2= letter
+    - wines.each do |wine|
+      .index-item
+        %h4= link_to wine.name, wine_path(wine.friendly_id)

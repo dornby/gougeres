@@ -1,9 +1,10 @@
 %h2 Recettes
 
-.recipes
-  %ul
-    - @recipes.sort.to_h.each do |letter, recipes|
-      %h2= letter
-      - recipes.each do |recipe|
-        .recipe
-          %h4= link_to recipe.name, recipe_path(recipe.friendly_id)
+%input.string.search-bar{placeholder: "Saisir un nom ou un ingrédient"}
+
+.index-items
+  - @recipes.sort.to_h.each do |letter, recipes|
+    %h2= letter
+    - recipes.each do |recipe|
+      .index-item
+        %h4= link_to recipe.name, recipe_path(recipe.friendly_id)
