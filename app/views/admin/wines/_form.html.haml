@@ -43,6 +43,8 @@
   = f.input :variety, label: false, placeholder: "100% Chardonnay"
   %h4 Producteur
   = f.input :producer, label: false, placeholder: "Domaine du Bon Vin"
+  %h4 Caviste
+  = f.input :merchant, label: false, placeholder: "Crus & Découvertes"
   %h3 Photo
   - if form == "edit" && @wine.picture.attachment
     = f.input :picture, label: false, input_html: { style: "display:none" }

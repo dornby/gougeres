@@ -57,3 +57,6 @@
   - if !@wine.producer.blank?
     %h4= "Producteur"
     = @wine.producer
+  - if !@wine.merchant.blank?
+    %h4= "Caviste"
+    = @wine.merchant
