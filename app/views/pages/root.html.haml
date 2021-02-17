@@ -1,5 +1,5 @@
 .title-container
-  %h1.title Gougères
+  %h1.title= link_to("Gougères", recipe_path(Recipe.find(13).friendly_id))
   .title-emojis
     👩‍🍳👨‍🍳
 
