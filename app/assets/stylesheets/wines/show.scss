@@ -1,10 +1,4 @@
-.wine-picture {
-  height: 600px;
-  width: 100vw;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-
+.cover-picture {
   &.red-border {
     border-bottom: 1rem solid #5a0611;
   }
@@ -177,12 +171,7 @@
 }
 
 @media only screen and (min-width : 1200px) {
-  .wine-picture {
-    height: 450px;
-    width: 450px;
-    background-size:cover;
-    background-position:center;
-
+  .cover-picture {
     &.red-border {
       border: 6px solid #5a0611;
     }

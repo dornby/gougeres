@@ -1,4 +1,9 @@
 .cover-picture {
+  height: 600px;
+  width: 100vw;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   margin-left: 50%;
   margin-top: -1%;
   -webkit-transform: translateX(-50%);
@@ -15,6 +20,10 @@
 
 @media only screen and (min-width : 1200px) {
   .cover-picture {
+    height: 450px;
+    width: 450px;
+    background-size: cover;
+    background-position: center;
     margin-top: 2rem;
     margin-left: 0;
     -webkit-transform: none;
