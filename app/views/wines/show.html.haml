@@ -6,7 +6,7 @@
 
 - if @wine.picture.attachment
   -url = cl_image_path @wine.picture.key
-  .cover-picture{style: "background-image:url(#{url})", class: "#{@wine.color}-border"}
+  .cover-pictured{style: "background-image:url(#{url})", class: "#{@wine.color}-border"}
     = cl_image_tag @wine.picture.key, id: "wine-picture"
 
 .wine-show-name-container
