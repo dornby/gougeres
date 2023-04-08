@@ -8,12 +8,13 @@ module HttpAuthConcern # rubocop:disable Style/Documentation
   end
 
   def http_authenticate
-    return true unless Rails.env == 'production'
-    return true if request.remote_ip == '78.193.208.180'
+    return true unless Rails.env == "production"
+    return true if request.remote_ip == "78.193.208.180"
+    return true if request.remote_ip == "88.165.91.118"
 
     authenticate_or_request_with_http_basic do |username, password|
-      username == ENV['HTTP_BASIC_AUTH_USERNAME'] &&
-        password == ENV['HTTP_BASIC_AUTH_PASSWORD']
+      username == ENV["HTTP_BASIC_AUTH_USERNAME"] &&
+        password == ENV["HTTP_BASIC_AUTH_PASSWORD"]
     end
   end
 end
