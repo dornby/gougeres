@@ -19,15 +19,14 @@
   .wine-show-details-top
     - if @wine.average_review
       .wine-show-reviews
-        .wine-show-review.wine-show-average-review
-          .wine-show-review-title= "Note"
-          - average_review = @wine.average_review
-          .wine-show-review-value= average_review % 1 == 0 ? average_review.round : average_review
+        .wine-review.wine-show-average-review
+          .wine-review-title= "Note"
+          .wine-review-value= @wine.round_average_review
         .wine-show-personal-reviews
           - @wine.wine_reviews.each do |wine_review|
-            .wine-show-review.wine-show-personal-review{class: "#{wine_review.reviewer.name.downcase}-wine-review"}
-              .wine-show-review-title= wine_review.reviewer.name
-              .wine-show-review-value= wine_review.review
+            .wine-review.wine-show-review.wine-show-personal-review{class: "#{wine_review.reviewer.name.downcase}-wine-review"}
+              .wine-review-title= wine_review.reviewer.name
+              .wine-review-value= wine_review.review
     - if @wine.is_organic || @wine.is_biodynamic || @wine.is_natural
       .wine-show-processes
         .wine-show-processes-title= "Labels"

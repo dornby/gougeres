@@ -66,16 +66,16 @@ input.string {
   overflow: hidden;
 }
 
-.wine-review {
+.wine-form-review {
   display: flex;
   width: 100%;
 }
 
-.wine-review-input {
+.wine-form-review-input {
   width: 70%;
 }
 
-.wine-review-value {
+.wine-form-review-value {
   display: flex;
   align-items: center;
   margin-left: 1rem;
@@ -97,7 +97,7 @@ input.string {
     font-size: 32px;
   }
 
-  .wine-review-input {
+  .wine-form-review-input {
     width: 60%;
   }
 

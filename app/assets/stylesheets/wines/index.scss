@@ -1,0 +1,28 @@
+.wine-index-review {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 15%;
+  color: #f7f7f7;
+  justify-content: center !important;
+  font-size: 80%;
+}
+
+.wine-index-review-bad {
+  background: #740000;
+}
+
+.wine-index-review-average-bad {
+  background: #9a4000;
+}
+
+.wine-index-review-average {
+  background: #a38200;
+}
+
+.wine-index-review-average-good {
+  background: #7f9000;
+}
+
+.wine-index-review-good {
+  background: #00810d;
+}

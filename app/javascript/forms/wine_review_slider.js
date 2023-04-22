@@ -1,10 +1,10 @@
 $(document).on('turbolinks:load', function() {
-  const wineReviewContainers = document.querySelectorAll(".wine-review-container")
+  const wineReviewContainers = document.querySelectorAll(".wine-form-review-container")
 
   if (wineReviewContainers.length > 0) {
     const sliders = document.querySelectorAll("input[type='range']")
-    const rangeValues = document.querySelectorAll(".wine-review-value")
-    const wineReviewsContainer = document.querySelector('.wine-reviews-container')
+    const rangeValues = document.querySelectorAll(".wine-form-review-value")
+    const wineReviewsContainer = document.querySelector('.wine-form-reviews-container')
     const hiddenInputs = wineReviewsContainer.querySelectorAll("input.hidden")
 
     const pathRegExp = RegExp('/admin/wines/[0-9]+/edit$')

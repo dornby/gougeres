@@ -27,23 +27,6 @@
   color: #f7f7f7;
   margin-right: 1rem;
 
-  .wine-show-review {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-
-    .wine-show-review-title {
-      margin-top: 10%;
-      font-size: 90%;
-    }
-
-    .wine-show-review-value {
-      margin-bottom: 25%;
-      font-size: 200%;
-    }
-  }
-
   .wine-show-average-review {
     width: 6rem;
     background: #b77907;

@@ -1,0 +1,16 @@
+.wine-review {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+
+  .wine-review-title {
+    margin-top: 10%;
+    font-size: 90%;
+  }
+
+  .wine-review-value {
+    margin-bottom: 25%;
+    font-size: 200%;
+  }
+}

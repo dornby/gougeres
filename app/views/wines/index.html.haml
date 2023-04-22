@@ -8,3 +8,5 @@
     - wines.each do |wine|
       .index-item
         %h4= link_to wine.name, wine_path(wine.friendly_id)
+        .wine-index-review.wine-review{class: wine_review_class_for(wine)}
+          = wine.round_average_review

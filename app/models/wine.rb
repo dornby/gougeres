@@ -24,4 +24,8 @@ class Wine < ApplicationRecord # rubocop:disable Style/Documentation
   def to_param
     id.to_s
   end
+
+  def round_average_review
+    average_review % 1 == 0 ? average_review.round : average_review
+  end
 end
