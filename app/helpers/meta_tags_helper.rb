@@ -6,7 +6,7 @@ module MetaTagsHelper # rubocop:disable Style/Documentation
   end
 
   def meta_description
-    default_meta = "Miam miam, les recettes d'Alice et Hugo pour vous satisfaire !"
+    default_meta = "😋 Miam miam, les recettes d'Alice et Hugo pour vous satisfaire !"
     content_for?(:meta_description) ? content_for(:meta_description) : default_meta
   end
 
