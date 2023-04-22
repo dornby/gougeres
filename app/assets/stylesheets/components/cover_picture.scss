@@ -49,6 +49,12 @@
     background-size:cover;
     background-position:center;
 
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
     &.red-border {
       border: 6px solid #5a0611;
     }

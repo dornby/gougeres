@@ -5,7 +5,8 @@
 
 - if @recipe.picture.attachment
   - url = cl_image_path @recipe.picture.key
-  .cover-picture{style: "background-image:url(#{url})"}
+  .cover-picture
+    = cl_image_tag @recipe.picture.key
 
 %h3= @recipe.name
 
