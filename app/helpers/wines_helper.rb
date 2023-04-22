@@ -2,6 +2,8 @@
 
 module WinesHelper # rubocop:disable Style/Documentation
   def wine_review_class_for(wine)
+    return if wine.average_review.nil?
+
     if wine.average_review <=5
       "wine-index-review-bad"
     elsif wine.average_review <=6
