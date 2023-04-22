@@ -5,10 +5,11 @@
   color: #f7f7f7;
   justify-content: center !important;
   font-size: 80%;
+  font-weight: bolder;
 }
 
 .wine-index-review-bad {
-  background: #740000;
+  background: #ce4c33;
 }
 
 .wine-index-review-average-bad {
@@ -16,13 +17,13 @@
 }
 
 .wine-index-review-average {
-  background: #a38200;
+  background: #f7cb1f;
 }
 
 .wine-index-review-average-good {
-  background: #7f9000;
+  background: #54f2a8;
 }
 
 .wine-index-review-good {
-  background: #00810d;
+  background: #3cecd4;
 }
