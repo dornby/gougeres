@@ -6,11 +6,12 @@
   %h3 Détails
   = f.input :portions, label: false, placeholder: "Nombre de portions"
   = f.hidden_field :is_sweet, value: "false"
-  .salty-sweet-labels{ data: { is_sweet: @recipe.is_sweet.to_s } }
-    .salty-sweet-label.selected#salty-label
-      Salé
-    .salty-sweet-label#sweet-label
-      Sucré
+  .salty-sweet-labels-toggle-js{ data: { is_sweet: @recipe.is_sweet.to_s } }
+    .salty-sweet-labels
+      .salty-sweet-label.selected#salty-label
+        Salé
+      .salty-sweet-label#sweet-label
+        Sucré
   .ingredient-title-container
     %h3 Ingrédients
   #recipe-ingredients

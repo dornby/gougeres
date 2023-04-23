@@ -1,12 +1,13 @@
 $(document).on('turbolinks:load', function() {
+  const labelsToggle = document.querySelector('.salty-sweet-labels-toggle-js')
   const labels = document.querySelector('.salty-sweet-labels')
 
-  if (labels) {
+  if (labelsToggle) {
     const saltyLabel = document.getElementById('salty-label')
     const sweetLabel = document.getElementById('sweet-label')
-    const recipeIsSweet = labels.dataset.isSweet
+    const recipeIsSweet = labelsToggle.dataset.isSweet
 
-    const toggleLabels = (thisElement) => {
+    function toggleLabels(thisElement) {
       thisElement.classList.add("selected")
       Array
         .from(labels.children)
@@ -16,14 +17,14 @@ $(document).on('turbolinks:load', function() {
         })
     }
 
-    const updateInput = (thisElement) => {
+    function updateInput(thisElement) {
       if (!thisElement.classList.contains("selected")) {
         toggleLabels(thisElement)
       }
       toggleValue(thisElement);
     }
 
-    const toggleValue = (clickedLabel) => {
+    function toggleValue(clickedLabel) {
       const input = document.getElementById("recipe_is_sweet")
 
       if (clickedLabel.id == "salty-label") {

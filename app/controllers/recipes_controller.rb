@@ -8,7 +8,11 @@ class RecipesController < ApplicationController # rubocop:disable Style/Document
   end
 
   def queried_index
-    queried_recipes = Recipe.select("recipes.*, lower(recipes.name)").left_outer_joins(:recipe_ingredients, :ingredients).where(query(params))
+    queried_recipes = Recipe
+      .select("recipes.*, lower(recipes.name)")
+      .left_outer_joins(:recipe_ingredients, :ingredients)
+      .where(text_query(params[:q]))
+      .where(savour_query(params[:savour]))
 
     @recipes = queried_recipes.distinct.order("lower(recipes.name)").group_by do |recipe|
       recipe.name[0].downcase
@@ -33,15 +37,25 @@ class RecipesController < ApplicationController # rubocop:disable Style/Document
 
   private
 
-  def query(params)
+  def text_query(text)
     query_parts = []
-    query_param = params[:q].downcase
-    if params[:q] != ""
+    query_param = text.downcase
+
+    if text != ""
       query_parts << "lower(recipes.name) LIKE '%#{query_param}%'"
       query_parts << "lower(ingredients.name) LIKE '%#{query_param}%'"
     else
       query_parts << "true"
     end
+
     query_parts.join(" OR ")
+  end
+
+  def savour_query(savour)
+    if savour == "salty"
+      "recipes.is_sweet = false"
+    elsif savour == "sweet"
+      "recipes.is_sweet = true"
+    end
   end
 end

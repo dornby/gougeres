@@ -1,6 +1,12 @@
 %h2 Recettes
 
-%input.string.search-bar{placeholder: "Saisir un nom ou un ingrédient"}
+.search-form
+  %input.string.search-bar{placeholder: "Saisir un nom ou un ingrédient"}
+  .salty-sweet-labels
+    .salty-sweet-label#salty-label
+      Salé
+    .salty-sweet-label#sweet-label
+      Sucré
 
 .index-items
   - @recipes.sort.to_h.each do |letter, recipes|

@@ -1,6 +1,7 @@
 %h2 Vins
 
-%input.string.search-bar{placeholder: "Saisir un nom, un cépage, une région ou un producteur"}
+.search-form
+  %input.string.search-bar{placeholder: "Saisir un nom, un cépage, une région ou un producteur"}
 
 .index-items
   - @wines.sort.to_h.each do |letter, wines|

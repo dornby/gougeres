@@ -205,36 +205,3 @@ input.string#recipe_name {
   white-space: nowrap;
   overflow: hidden;
 }
-
-.salty-sweet-labels {
-  display: flex;
-  margin-top: 1rem;
-
-  .salty-sweet-label {
-    margin-right: 1rem;
-    padding: 0.3rem 0.7rem;
-    border-radius: 40px;
-    cursor: pointer;
-
-    &#salty-label {
-      border: 1px solid #b4da79;
-    }
-
-    &#sweet-label {
-      border: 1px solid #ffb88c;
-    }
-
-    &#salty-label.selected {
-      background: #b4da79;
-    }
-
-    &#sweet-label.selected {
-      background: #ffb88c;
-    }
-
-    &.selected {
-      -webkit-box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.25);
-      box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.25);
-    }
-  }
-}
