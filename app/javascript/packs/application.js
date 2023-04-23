@@ -25,8 +25,10 @@ require("forms/wine_review_slider")
 
 require("components/autocomplete")
 require("components/menu")
-require("components/search")
 require("components/share_button")
+
+require("components/search/savour")
+require("components/search/text")
 
 require("pages/recipe_show_edit_link")
 require("pages/wine_show_edit_link")

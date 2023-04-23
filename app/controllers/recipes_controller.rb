@@ -38,17 +38,16 @@ class RecipesController < ApplicationController # rubocop:disable Style/Document
   private
 
   def text_query(text)
+    return if text.blank?
+
     query_parts = []
     query_param = text.downcase
 
     if text != ""
       query_parts << "lower(recipes.name) LIKE '%#{query_param}%'"
       query_parts << "lower(ingredients.name) LIKE '%#{query_param}%'"
-    else
-      query_parts << "true"
+      query_parts.join(" OR ")
     end
-
-    query_parts.join(" OR ")
   end
 
   def savour_query(savour)
