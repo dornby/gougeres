@@ -6,7 +6,7 @@ module Admin
     before_action :destroy_discardable_wine_taggings, only: %i[create update]
 
     def index
-      @wines = Wine.all.order('lower(name)').group_by do |wine|
+      @wines = Wine.all.order("lower(name)").group_by do |wine|
         wine.name[0].downcase
       end
     end
@@ -74,30 +74,30 @@ module Admin
 
     def destroy_discardable_reviews
       params[:wine][:wine_reviews_attributes]&.each do |params_wr|
-        params_wr[1]['_destroy'] = '1' if params_wr[1]['review'] == '-1'
+        params_wr[1]["_destroy"] = "1" if params_wr[1]["review"] == "-1"
       end
     end
 
     def destroy_discardable_wine_taggings
       params[:wine][:wine_taggings_attributes]&.each do |params_wt|
-        if params_wt[1]['wine_tag_id'][0] == 'D'
-          params_wt[1]['_destroy'] = '1'
-          new_param = params_wt[1]['wine_tag_id']
+        if params_wt[1]["wine_tag_id"][0] == "D"
+          params_wt[1]["_destroy"] = "1"
+          new_param = params_wt[1]["wine_tag_id"]
           new_param.slice!(0)
-          params_wt[1]['wine_tag_id'] = new_param
+          params_wt[1]["wine_tag_id"] = new_param
         end
         add_ids_to_wine_taggings(params_wt)
       end
     end
 
     def add_ids_to_wine_taggings(params_wt)
-      return unless params_wt[1]['wine_tag_id'][0] == 'E'
+      return unless params_wt[1]["wine_tag_id"][0] == "E"
 
-      tagging_id = params_wt[1]['wine_tag_id']
+      tagging_id = params_wt[1]["wine_tag_id"]
       tagging_id.slice!(0)
       tag_id = WineTagging.find(tagging_id).wine_tag_id.to_s
-      params_wt[1]['wine_tag_id'] = tag_id
-      params_wt[1]['id'] = tagging_id
+      params_wt[1]["wine_tag_id"] = tag_id
+      params_wt[1]["id"] = tagging_id
     end
   end
 end

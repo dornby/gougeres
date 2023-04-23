@@ -31,7 +31,7 @@ module Admin
     end
 
     def show
-      @ingredient = Ingredient.find(params['id'])
+      @ingredient = Ingredient.find(params["id"])
 
       respond_to do |format|
         format.json { render json: @ingredient }

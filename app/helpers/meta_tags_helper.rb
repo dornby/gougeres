@@ -2,7 +2,7 @@
 
 module MetaTagsHelper # rubocop:disable Style/Documentation
   def meta_title
-    content_for?(:meta_title) ? content_for(:meta_title) : 'Gougères'
+    content_for?(:meta_title) ? content_for(:meta_title) : "Gougères"
   end
 
   def meta_description
@@ -14,6 +14,6 @@ module MetaTagsHelper # rubocop:disable Style/Documentation
     meta_image = (content_for?(:meta_image) ? content_for(:meta_image) : nil)
     return nil unless meta_image
 
-    meta_image.starts_with?('http') ? meta_image : image_url(meta_image)
+    meta_image.starts_with?("http") ? meta_image : image_url(meta_image)
   end
 end

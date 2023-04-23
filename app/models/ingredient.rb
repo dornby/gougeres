@@ -7,11 +7,11 @@ class Ingredient < ApplicationRecord # rubocop:disable Style/Documentation
   has_many :recipes, through: :recipe_ingredients
 
   def name_presence
-    errors.add(:base, 'Le champ doit être remplit') if name.blank?
+    errors.add(:base, "Le champ doit être remplit") if name.blank?
   end
 
   def name_uniqueness
-    errors.add(:base, 'Cet ingrédient existe déjà') if name_exists(name)
+    errors.add(:base, "Cet ingrédient existe déjà") if name_exists(name)
   end
 
   private

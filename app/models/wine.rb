@@ -4,7 +4,7 @@ class Wine < ApplicationRecord # rubocop:disable Style/Documentation
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  validates :name, presence: { message: 'doit être rempli' }
+  validates :name, presence: { message: "doit être rempli" }
   validates :color, presence: true
 
   has_many :wine_taggings

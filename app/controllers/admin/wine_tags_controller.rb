@@ -11,7 +11,7 @@ module Admin
     end
 
     def queried_index
-      @wine_tags = WineTag.where('colors @> ARRAY[?]', params['wine_color']).sort_by(&:id)
+      @wine_tags = WineTag.where("colors @> ARRAY[?]", params["wine_color"]).sort_by(&:id)
 
       respond_to do |format|
         format.json { render json: @wine_tags }
@@ -19,7 +19,7 @@ module Admin
     end
 
     def show
-      @wine_tag = WineTag.find(params['id'])
+      @wine_tag = WineTag.find(params["id"])
 
       respond_to do |format|
         format.json { render json: @wine_tag }
